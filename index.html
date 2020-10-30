@@ -1,7 +1,36 @@
 <?php include(dirname(__FILE__).'/_inc/_header.html'); ?>
 
 <main>
-  コンテンツ
+  <button id="login">login</button>
+  <button id="logout" class="hidden">logout</button>
+  <div class="line-container">
+    <img src="/chat_ogawa_08/image/smartphone-image-i.png" alt="">
+    <div class="screen">
+      <div class="screen-header">
+        <p class="screen-header__text01">&lt;1</p>
+        <p class="screen-header__text02">LINEの部屋 (11)</p>
+        <p class="screen-header__text03">
+          <i class="fas fa-search"></i>
+          <i class="fas fa-phone"></i>
+          <i class="fas fa-bars"></i>
+        </p>
+      </div>
+      <ul id="messages" class="hidden">
+      </ul>
+      <div class="screen-footer">
+        <p class="screen-footer__left">
+          <i class="fas fa-plus"></i>
+          <i class="fas fa-camera"></i>
+          <i class="fas fa-image"></i>
+        </p>
+        <form class="hidden" autocomplete="off">
+          <input type="text" id="message" placeholder="メッセージを入力">
+        </form>
+        <p class="screen-footer__right"><i id="send-btn" class="far fa-paper-plane"></i></p>
+      </div>
+    </div>
+  </div>
 </main>
+<a href='https://pngtree.com/so/透明な背景に分離'>透明な背景に分離 png from pngtree.com</a>
 
 <?php include(dirname(__FILE__).'/_inc/_footer.html'); ?>

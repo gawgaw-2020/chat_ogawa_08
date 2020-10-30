@@ -1,0 +1,129 @@
+
+
+.hidden {
+  display: none;
+}
+
+
+.line-container {
+  margin: 0 auto;
+  width: 450px;
+  position: relative;
+  .screen-header {
+    padding: 0.5em 1em;
+    display: flex;
+    background-color: #273246;
+    color: #fff;
+    .screen-header__text01 {
+      margin-right: 10px;
+      letter-spacing: 5px;
+    }
+    .screen-header__text02 {
+      font-weight: bold;
+      letter-spacing: 1px;
+      width: 200px;
+    }
+    .screen-header__text03 {
+    i {
+      display: inline-block;
+      margin-right: 10px;
+    }
+    }
+  }
+  .screen {
+    background-color: #7392c0;
+    overflow: auto;
+    width: 360px;
+    height: 648px;
+    position: absolute;
+    top: 133px;
+    left: 47px;
+    #messages::-webkit-scrollbar {
+      display: none;
+    }
+    #messages {
+      height: 555px;
+      overflow: auto;
+      li {
+        font-size: 14px;
+        width: 200px;
+        border-radius: 18px;
+        background-color: #85e249;
+        padding: 0.4em 1em;
+        margin: 0 12px 16px auto;
+        position: relative;
+        .username {
+          display: none;
+        }
+        .message-date-time {
+          text-align: right;
+          width: 50px;
+          transform: scale(0.8);
+          font-size: 1rem;
+          color: #fff;
+          position: absolute;
+          bottom: 2px;
+          left: -48px;
+        }
+      }
+    }
+    .screen-footer{
+      padding: 0.5em 0.8em 1em;
+      width: 100%;
+      position: absolute;
+      bottom: 0;
+      color: #ccc;
+      background-color: #273246;
+      display: flex;
+      .screen-footer__left {
+        width: 88px;
+        font-size: 2rem;
+        i {
+          margin-right: 5px;
+        }
+      }
+      form {
+        input {
+          font-size: 1.4rem;
+          width: 210px;
+          color: #ffffff;
+          border: none;
+          outline: none;
+          background-color: #666;
+          border-radius: 20px;
+          padding: 0.2em 0.8em;
+          margin-right: 12px;
+        }
+      }
+      .screen-footer__right {
+        .fa-paper-plane {
+          padding-top: 5px;
+          font-size: 2.2rem;
+        }
+      }
+    }
+  }
+}
+
+.line-container .screen #messages li.another {
+  background-color: #fff;
+  color: #333;
+  text-align: left;
+  margin: 0 auto 24px 12px;
+  .username {
+    transform: scale(0.8);
+    display: block;
+    font-size: 1rem;
+    color: #fff;
+    position: absolute;
+    top: -17px;
+    left: 3px;
+  }
+  .message-date-time {
+    text-align-last: left;
+    position: absolute;
+    bottom: 1px;
+    left: initial;
+    right: -49px;
+  }
+}

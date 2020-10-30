@@ -66,7 +66,7 @@ html {
 }
 
 body {
-  font-size: 1.0rem;
+  font-size: 1.6rem;
   color: #333;
   background-color: #f7f7f7;
   font-family: "Helvetica Neue", Arial, "Hiragino Kaku Gothic ProN", "Hiragino Sans", Meiryo, sans-serif;
@@ -83,604 +83,6 @@ a {
 img {
   width: 100%;
   height: auto;
-}
-
-.lightsaber {
-  position: relative;
-}
-
-.lightsaber label {
-  cursor: pointer;
-  position: absolute;
-  bottom: 0;
-  left: 0;
-  z-index: 88;
-  text-indent: -9999px;
-  width: 15px;
-  height: 50px;
-  border-bottom: solid 4px grey;
-  border-top: solid 5px grey;
-  border-radius: 5px;
-  -moz-border-radius: 5px;
-  -webkit-border-radius: 5px;
-  -o-border-radius: 5px;
-  -ms-border-radius: 5px;
-  background: #e2e2e2;
-  /* Old browsers */
-  background: -webkit-gradient(linear, left top, right top, from(#e2e2e2), color-stop(50%, #dbdbdb), color-stop(51%, #d1d1d1), to(#fefefe));
-  background: linear-gradient(to right, #e2e2e2 0%, #dbdbdb 50%, #d1d1d1 51%, #fefefe 100%);
-  /* W3C */
-  /* FF3.6+ */
-  /* Chrome,Safari4+ */
-  /* Chrome10+,Safari5.1+ */
-  /* Opera 11.10+ */
-  background: -ms-linear-gradient(left, #e2e2e2 0%, #dbdbdb 50%, #d1d1d1 51%, #fefefe 100%);
-  /* IE10+ */
-  filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#e2e2e2', endColorstr='#fefefe',GradientType=1 );
-  /* IE6-9 */
-}
-
-.lightsaber .switch {
-  background: #B94A37;
-  width: 5px;
-  height: 10px;
-  display: block;
-  position: absolute;
-  bottom: 25px;
-  left: 13px;
-  transition: left 200ms;
-  -moz-transition: left 200ms;
-  -webkit-transition: left 200ms;
-  -o-transition: left 200ms;
-  -ms-transition: left 200ms;
-  border-radius: 10px;
-  -moz-border-radius: 10px;
-  -webkit-border-radius: 10px;
-  -o-border-radius: 10px;
-  -ms-border-radius: 10px;
-}
-
-.lightsaber input[type=checkbox] {
-  position: absolute;
-  bottom: 0;
-  left: 0;
-  opacity: 0;
-  -moz-opacity: 0;
-  -webkit-opacity: 0;
-  -o-opacity: 0;
-  -ms-opacity: 0;
-  z-index: 77;
-}
-
-.lightsaber .plasma {
-  transition: height 300ms;
-  -moz-transition: height 300ms;
-  -webkit-transition: height 300ms;
-  -o-transition: height 300ms;
-  -ms-transition: height 300ms;
-  border-radius: 12px 12px 0 0;
-  position: absolute;
-  bottom: 55px;
-  left: 2px;
-  width: 10px;
-  display: block;
-  filter: blur(1px);
-  -moz-filter: blur(1px);
-  -webkit-filter: blur(1px);
-  -o-filter: blur(1px);
-  -ms-filter: blur(1px);
-  height: 0;
-}
-
-.lightsaber input[type=checkbox]:checked ~ div.plasma {
-  height: 250px;
-}
-
-.lightsaber input[type=checkbox]:hover ~ div.switch {
-  background: #c09853;
-  left: 12px;
-}
-
-.lightsaber input[type=checkbox]:checked ~ div.switch {
-  background: #468847;
-}
-
-.yoda {
-  background: #87dc5a;
-  /* Old browsers */
-  background: -webkit-gradient(linear, left top, right top, from(#87dc5a), color-stop(30%, #fefefe), color-stop(50%, #fefefe), color-stop(70%, #fefefe), to(#87dc5a));
-  background: linear-gradient(to right, #87dc5a 0%, #fefefe 30%, #fefefe 50%, #fefefe 70%, #87dc5a 100%);
-  /* W3C */
-  /* FF3.6+ */
-  /* Chrome,Safari4+ */
-  /* Chrome10+,Safari5.1+ */
-  /* Opera 11.10+ */
-  background: -ms-linear-gradient(left, #87dc5a 0%, #fefefe 30%, #fefefe 50%, #fefefe 70%, #87dc5a 100%);
-  /* IE10+ */
-  filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#87dc5a', endColorstr='#87dc5a',GradientType=1 );
-  /* IE6-9 */
-  animation-name: yoda;
-  -moz-animation-name: yoda;
-  -webkit-animation-name: yoda;
-  -o-animation-name: yoda;
-  -ms-animation-name: yoda;
-  animation-duration: 2s;
-  -moz-animation-duration: 2s;
-  -webkit-animation-duration: 2s;
-  -o-animation-duration: 2s;
-  -ms-animation-duration: 2s;
-  animation-iteration-count: infinite;
-  -moz-animation-iteration-count: infinite;
-  -webkit-animation-iteration-count: infinite;
-  -o-animation-iteration-count: infinite;
-  -ms-animation-iteration-count: infinite;
-}
-
-.vader {
-  background: #e51115;
-  /* Old browsers */
-  background: -webkit-gradient(linear, left top, right top, from(#e51115), color-stop(30%, #fefefe), color-stop(47%, #fefefe), color-stop(71%, #fefefe), to(#e51115));
-  background: linear-gradient(to right, #e51115 0%, #fefefe 30%, #fefefe 47%, #fefefe 71%, #e51115 100%);
-  /* W3C */
-  /* FF3.6+ */
-  /* Chrome,Safari4+ */
-  /* Chrome10+,Safari5.1+ */
-  /* Opera 11.10+ */
-  background: -ms-linear-gradient(left, #e51115 0%, #fefefe 30%, #fefefe 47%, #fefefe 71%, #e51115 100%);
-  /* IE10+ */
-  filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#e51115', endColorstr='#e51115',GradientType=1 );
-  /* IE6-9 */
-  animation-name: vader;
-  -moz-animation-name: vader;
-  -webkit-animation-name: vader;
-  -o-animation-name: vader;
-  -ms-animation-name: vader;
-  animation-duration: 2s;
-  -moz-animation-duration: 2s;
-  -webkit-animation-duration: 2s;
-  -o-animation-duration: 2s;
-  -ms-animation-duration: 2s;
-  animation-iteration-count: infinite;
-  -moz-animation-iteration-count: infinite;
-  -webkit-animation-iteration-count: infinite;
-  -o-animation-iteration-count: infinite;
-  -ms-animation-iteration-count: infinite;
-}
-
-.windu {
-  background: #ca74dd;
-  /* Old browsers */
-  background: -webkit-gradient(linear, left top, right top, from(#ca74dd), color-stop(30%, #fefefe), color-stop(47%, #fefefe), color-stop(71%, #fefefe), to(#ca74dd));
-  background: linear-gradient(to right, #ca74dd 0%, #fefefe 30%, #fefefe 47%, #fefefe 71%, #ca74dd 100%);
-  /* W3C */
-  /* FF3.6+ */
-  /* Chrome,Safari4+ */
-  /* Chrome10+,Safari5.1+ */
-  /* Opera 11.10+ */
-  background: -ms-linear-gradient(left, #ca74dd 0%, #fefefe 30%, #fefefe 47%, #fefefe 71%, #ca74dd 100%);
-  /* IE10+ */
-  filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#ca74dd', endColorstr='#ca74dd',GradientType=1 );
-  /* IE6-9 */
-  animation-name: windu;
-  -moz-animation-name: windu;
-  -webkit-animation-name: windu;
-  -o-animation-name: windu;
-  -ms-animation-name: windu;
-  animation-duration: 2s;
-  -moz-animation-duration: 2s;
-  -webkit-animation-duration: 2s;
-  -o-animation-duration: 2s;
-  -ms-animation-duration: 2s;
-  animation-iteration-count: infinite;
-  -moz-animation-iteration-count: infinite;
-  -webkit-animation-iteration-count: infinite;
-  -o-animation-iteration-count: infinite;
-  -ms-animation-iteration-count: infinite;
-}
-
-.obi-wan {
-  background: #3784d6;
-  /* Old browsers */
-  background: -webkit-gradient(linear, left top, right top, from(#3784d6), color-stop(30%, #fefefe), color-stop(47%, #fefefe), color-stop(71%, #fefefe), to(#3784d6));
-  background: linear-gradient(to right, #3784d6 0%, #fefefe 30%, #fefefe 47%, #fefefe 71%, #3784d6 100%);
-  /* W3C */
-  /* FF3.6+ */
-  /* Chrome,Safari4+ */
-  /* Chrome10+,Safari5.1+ */
-  /* Opera 11.10+ */
-  background: -ms-linear-gradient(left, #3784d6 0%, #fefefe 30%, #fefefe 47%, #fefefe 71%, #3784d6 100%);
-  /* IE10+ */
-  filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#3784d6', endColorstr='#3784d6',GradientType=1 );
-  /* IE6-9 */
-  animation-name: obi-wan;
-  -moz-animation-name: obi-wan;
-  -webkit-animation-name: obi-wan;
-  -o-animation-name: obi-wan;
-  -ms-animation-name: obi-wan;
-  animation-duration: 2s;
-  -moz-animation-duration: 2s;
-  -webkit-animation-duration: 2s;
-  -o-animation-duration: 2s;
-  -ms-animation-duration: 2s;
-  animation-iteration-count: infinite;
-  -moz-animation-iteration-count: infinite;
-  -webkit-animation-iteration-count: infinite;
-  -o-animation-iteration-count: infinite;
-  -ms-animation-iteration-count: infinite;
-}
-
-div {
-  -webkit-transform: translateZ(0);
-  transform: translateZ(0);
-}
-
-/* Animations */
-@keyframes yoda {
-  from {
-    -webkit-box-shadow: 0 0 10px #7EC855;
-            box-shadow: 0 0 10px #7EC855;
-  }
-  50% {
-    -webkit-box-shadow: 0 0 16px #7EC855;
-            box-shadow: 0 0 16px #7EC855;
-  }
-  to {
-    -webkit-box-shadow: 0 0 10px #7EC855;
-            box-shadow: 0 0 10px #7EC855;
-  }
-}
-
-@-webkit-keyframes yoda {
-  from {
-    -webkit-box-shadow: 0 0 10px #7EC855;
-            box-shadow: 0 0 10px #7EC855;
-  }
-  50% {
-    -webkit-box-shadow: 0 0 16px #7EC855;
-            box-shadow: 0 0 16px #7EC855;
-  }
-  to {
-    -webkit-box-shadow: 0 0 10px #7EC855;
-            box-shadow: 0 0 10px #7EC855;
-  }
-}
-
-@keyframes vader {
-  from {
-    -webkit-box-shadow: 0 0 10px #e51115;
-            box-shadow: 0 0 10px #e51115;
-  }
-  50% {
-    -webkit-box-shadow: 0 0 16px #e51115;
-            box-shadow: 0 0 16px #e51115;
-  }
-  to {
-    -webkit-box-shadow: 0 0 10px #e51115;
-            box-shadow: 0 0 10px #e51115;
-  }
-}
-
-@-webkit-keyframes vader {
-  from {
-    -webkit-box-shadow: 0 0 10px #e51115;
-            box-shadow: 0 0 10px #e51115;
-  }
-  50% {
-    -webkit-box-shadow: 0 0 16px #e51115;
-            box-shadow: 0 0 16px #e51115;
-  }
-  to {
-    -webkit-box-shadow: 0 0 10px #e51115;
-            box-shadow: 0 0 10px #e51115;
-  }
-}
-
-@keyframes windu {
-  from {
-    -webkit-box-shadow: 0 0 10px #ca74dd;
-            box-shadow: 0 0 10px #ca74dd;
-  }
-  50% {
-    -webkit-box-shadow: 0 0 16px #ca74dd;
-            box-shadow: 0 0 16px #ca74dd;
-  }
-  to {
-    -webkit-box-shadow: 0 0 10px #ca74dd;
-            box-shadow: 0 0 10px #ca74dd;
-  }
-}
-
-@-webkit-keyframes windu {
-  from {
-    -webkit-box-shadow: 0 0 10px #ca74dd;
-            box-shadow: 0 0 10px #ca74dd;
-  }
-  50% {
-    -webkit-box-shadow: 0 0 16px #ca74dd;
-            box-shadow: 0 0 16px #ca74dd;
-  }
-  to {
-    -webkit-box-shadow: 0 0 10px #ca74dd;
-            box-shadow: 0 0 10px #ca74dd;
-  }
-}
-
-@keyframes obi-wan {
-  from {
-    -webkit-box-shadow: 0 0 10px #3784d6;
-            box-shadow: 0 0 10px #3784d6;
-  }
-  50% {
-    -webkit-box-shadow: 0 0 16px #3784d6;
-            box-shadow: 0 0 16px #3784d6;
-  }
-  to {
-    -webkit-box-shadow: 0 0 10px #3784d6;
-            box-shadow: 0 0 10px #3784d6;
-  }
-}
-
-@-webkit-keyframes obi-wan {
-  from {
-    -webkit-box-shadow: 0 0 10px #3784d6;
-            box-shadow: 0 0 10px #3784d6;
-  }
-  50% {
-    -webkit-box-shadow: 0 0 16px #3784d6;
-            box-shadow: 0 0 16px #3784d6;
-  }
-  to {
-    -webkit-box-shadow: 0 0 10px #3784d6;
-            box-shadow: 0 0 10px #3784d6;
-  }
-}
-
-/*
-Name: StarWarsIntro.css
-URI: polarnotion.github.io/starwarsintro
-Author: Polar Notion
-Author URI: http://polarnotion.com/
-Description: A simple CSS library for creating a Star Wars Intro Crawl. May the Force be with you.
-Version: 1.0
-*/
-.main-logo {
-  font-family: 'jedi', san-serif;
-}
-
-.star-wars-intro {
-  width: 100%;
-  height: 500px;
-  font-family: "Droid Sans", arial, verdana, sans-serif;
-  font-weight: 700;
-  color: #EBD71C;
-  overflow: hidden;
-  position: relative;
-}
-
-.star-wars-intro p.intro-text {
-  height: 0;
-  position: relative;
-  top: 50%;
-  left: 50%;
-  -webkit-transform: translate(-50%, -50%);
-          transform: translate(-50%, -50%);
-  max-width: 16em;
-  font-size: 200%;
-  font-weight: 400;
-  color: #4ee;
-  opacity: 0;
-  z-index: 1;
-  text-align: center;
-  -webkit-animation: intro 2.5s ease-out;
-  animation: intro 2.5s ease-out;
-}
-
-.star-wars-intro .main-content {
-  margin-left: auto;
-  margin-right: auto;
-  position: absolute;
-  z-index: 3;
-  width: 98%;
-  height: 50em;
-  bottom: 0;
-  font-size: 80px;
-  font-weight: bold;
-  text-align: justify;
-  overflow: hidden;
-  -webkit-transform-origin: 50% 100%;
-          transform-origin: 50% 100%;
-  -webkit-transform: perspective(350px) rotateX(25deg);
-          transform: perspective(350px) rotateX(25deg);
-}
-
-.star-wars-intro .main-content:after {
-  position: absolute;
-  content: ' ';
-  top: 0;
-  bottom: 60%;
-  background-image: -webkit-gradient(linear, left top, left bottom, from(black), to(transparent));
-  background-image: linear-gradient(top, black 0%, transparent 100%);
-  pointer-events: none;
-}
-
-.star-wars-intro .space-button {
-  color: #EBD71C;
-  border: 12px solid #EBD71C;
-  padding: 20px;
-  background: transparent;
-  text-decoration: none;
-  margin: 0 auto;
-  display: block;
-  text-align: center;
-}
-
-.star-wars-intro .space-button:hover {
-  background-color: #D2BE03;
-  border-color: #D2BE03;
-  color: black;
-}
-
-.star-wars-intro .space-button:active,
-.star-wars-intro .space-button:focus {
-  background-color: #B8A40A;
-  border-color: #B8A40A;
-  color: black;
-}
-
-.star-wars-intro .title-content {
-  position: absolute;
-  top: 100%;
-  -webkit-animation: scroll 45s linear 7s forwards infinite;
-          animation: scroll 45s linear 7s forwards infinite;
-}
-
-.star-wars-intro .title-content > .content-header {
-  text-align: center;
-  margin-bottom: 20px;
-}
-
-.content-body {
-  margin-bottom: 40px;
-}
-
-/* Main Image Styles */
-.star-wars-intro .main-logo {
-  height: auto;
-  position: absolute;
-  width: 2.6em;
-  left: 52%;
-  top: 20vh;
-  font-size: 30em;
-  text-align: center;
-  margin-left: -1.3em;
-  line-height: 0.8em;
-  letter-spacing: -0.05em;
-  color: #000;
-  text-shadow: -2px -2px 0 #EBD71C, 2px -2px 0 #EBD71C, -2px 2px 0 #EBD71C, 2px 2px 0 #EBD71C;
-  opacity: 0;
-  z-index: 1;
-  -webkit-animation: logo 7s ease-out 2.5s;
-  animation: logo 7s ease-out 2.5s;
-}
-
-.star-wars-intro .main-logo > img {
-  max-width: 100%;
-}
-
-@-webkit-keyframes intro {
-  0% {
-    opacity: 1;
-  }
-  90% {
-    opacity: 1;
-  }
-  100% {
-    opacity: 0;
-  }
-}
-
-@keyframes intro {
-  0% {
-    opacity: 1;
-  }
-  90% {
-    opacity: 1;
-  }
-  100% {
-    opacity: 0;
-  }
-}
-
-@-webkit-keyframes logo {
-  0% {
-    -webkit-transform: scale(1);
-    opacity: 1;
-  }
-  50% {
-    opacity: 1;
-  }
-  100% {
-    -webkit-transform: scale(0.1);
-    opacity: 0;
-  }
-}
-
-@keyframes logo {
-  0% {
-    -webkit-transform: scale(1);
-            transform: scale(1);
-    opacity: 1;
-  }
-  50% {
-    opacity: 1;
-  }
-  100% {
-    -webkit-transform: scale(0.1);
-            transform: scale(0.1);
-    opacity: 0;
-  }
-}
-
-@-webkit-keyframes scroll {
-  0% {
-    top: 100%;
-  }
-  80% {
-    opacity: 0.7;
-  }
-  100% {
-    top: 30%;
-    opacity: 0;
-  }
-}
-
-@keyframes scroll {
-  0% {
-    top: 100%;
-  }
-  80% {
-    opacity: 0.7;
-  }
-  100% {
-    top: 30%;
-    opacity: 0;
-  }
-}
-
-@media screen and (max-width: 720px) {
-  @-webkit-keyframes scroll {
-    0% {
-      top: 100%;
-    }
-    80% {
-      opacity: 0.7;
-    }
-    100% {
-      top: -20%;
-      opacity: 0;
-    }
-  }
-  @keyframes scroll {
-    0% {
-      top: 100%;
-    }
-    80% {
-      opacity: 0.7;
-    }
-    100% {
-      top: -20%;
-      opacity: 0;
-    }
-  }
-  .star-wars-intro .main-content {
-    font-size: 35px;
-  }
-  .star-wars-intro .title-content {
-    position: absolute;
-    top: 100%;
-    -webkit-animation: scroll 30s linear 7s infinite forwards;
-            animation: scroll 30s linear 7s infinite forwards;
-  }
 }
 
 .section-inner {
@@ -1117,173 +519,147 @@ nav ul li.yellow:hover {
   }
 }
 
-.first-view-nav {
-  padding: 40px 0;
+.hidden {
+  display: none;
 }
 
-.first-view-nav .section-inner {
-  text-align: center;
-}
-
-.first-view-nav .section-inner a {
-  max-width: 450px;
-}
-
-.player-select__heading {
-  padding: 24px 0;
-}
-
-.player-select__selected-picture {
-  max-width: 300px;
-  margin: 0 auto 24px;
+.line-container {
+  margin: 0 auto;
+  width: 450px;
   position: relative;
 }
 
-.player-select__selected-picture #lightsaber-dooku {
-  visibility: hidden;
-  position: absolute;
-  top: 60%;
-  left: 72%;
-  -webkit-transform: rotate(18deg);
-          transform: rotate(18deg);
-}
-
-.player-select__selected-picture #lightsaber-dooku label {
-  opacity: 0;
-}
-
-.player-select__selected-picture #lightsaber-dooku .switch {
-  opacity: 0;
-}
-
-.player-select__selected-picture #lightsaber-anakin {
-  visibility: hidden;
-  position: absolute;
-  top: 81%;
-  left: 22%;
-}
-
-.player-select__selected-picture #lightsaber-anakin label {
-  opacity: 0;
-}
-
-.player-select__selected-picture #lightsaber-anakin .switch {
-  opacity: 0;
-}
-
-.player-select__selected-picture #lightsaber-obi {
-  visibility: hidden;
-  position: absolute;
-  top: 56%;
-  left: 46%;
-  -webkit-transform: rotate(-128deg);
-          transform: rotate(-128deg);
-}
-
-.player-select__selected-picture #lightsaber-obi label {
-  opacity: 0;
-}
-
-.player-select__selected-picture #lightsaber-obi .switch {
-  opacity: 0;
-}
-
-.player-select .player-list {
-  margin: 0 auto 24px;
+.line-container .screen-header {
+  padding: 0.5em 1em;
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
-  -webkit-box-pack: center;
-      -ms-flex-pack: center;
-          justify-content: center;
+  background-color: #273246;
+  color: #fff;
 }
 
-.player-select .player-list__character {
-  opacity: 0.5;
+.line-container .screen-header .screen-header__text01 {
+  margin-right: 10px;
+  letter-spacing: 5px;
 }
 
-.player-select .player-list #dooku.active {
-  opacity: 1;
+.line-container .screen-header .screen-header__text02 {
+  font-weight: bold;
+  letter-spacing: 1px;
+  width: 200px;
 }
 
-.player-select .player-list #anakin.active {
-  opacity: 1;
+.line-container .screen-header .screen-header__text03 i {
+  display: inline-block;
+  margin-right: 10px;
 }
 
-.player-select .player-list #obi.active {
-  opacity: 1;
-}
-
-.player-select__btns {
-  max-width: 600px;
-  margin: 0 auto;
-}
-
-.player-select__btns a {
-  margin-bottom: 20px;
-}
-
-.janken__heading {
-  padding: 24px 0;
-}
-
-.janken__enemy {
-  max-width: 300px;
-  margin: 0 auto;
-  overflow: hidden;
-  height: 150px;
-}
-
-.janken__text {
-  text-align: center;
-  padding: 8px;
-}
-
-.janken__myself {
-  max-width: 300px;
-  height: 300px;
-  position: relative;
-  margin: 0 auto 16px;
-}
-
-.janken__myself button {
-  width: 80%;
+.line-container .screen {
+  background-color: #7392c0;
+  overflow: auto;
+  width: 360px;
+  height: 648px;
   position: absolute;
-  bottom: 10%;
-  left: 50%;
-  -webkit-transform: translateX(-50%);
-          transform: translateX(-50%);
-  outline: 0;
+  top: 133px;
+  left: 47px;
 }
 
-.janken__myself .more {
-  visibility: hidden;
-}
-
-.janken .content-box {
-  font-size: 1.6rem;
-  max-width: 450px;
-  margin: 0 auto 24px;
-}
-
-.janken #dooku-obi {
+.line-container .screen #messages::-webkit-scrollbar {
   display: none;
 }
 
-.janken #dooku-anakin {
+.line-container .screen #messages {
+  height: 555px;
+  overflow: auto;
+}
+
+.line-container .screen #messages li {
+  font-size: 14px;
+  width: 200px;
+  border-radius: 18px;
+  background-color: #85e249;
+  padding: 0.4em 1em;
+  margin: 0 12px 16px auto;
+  position: relative;
+}
+
+.line-container .screen #messages li .username {
   display: none;
 }
 
-.janken #anakin-obi {
-  display: none;
+.line-container .screen #messages li .message-date-time {
+  text-align: right;
+  width: 50px;
+  -webkit-transform: scale(0.8);
+          transform: scale(0.8);
+  font-size: 1rem;
+  color: #fff;
+  position: absolute;
+  bottom: 2px;
+  left: -48px;
 }
 
-.janken__btns {
-  max-width: 450px;
-  margin: 0 auto;
+.line-container .screen .screen-footer {
+  padding: 0.5em 0.8em 1em;
+  width: 100%;
+  position: absolute;
+  bottom: 0;
+  color: #ccc;
+  background-color: #273246;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
 }
 
-.janken__btns a {
-  margin-bottom: 20px;
+.line-container .screen .screen-footer .screen-footer__left {
+  width: 88px;
+  font-size: 2rem;
+}
+
+.line-container .screen .screen-footer .screen-footer__left i {
+  margin-right: 5px;
+}
+
+.line-container .screen .screen-footer form input {
+  font-size: 1.4rem;
+  width: 210px;
+  color: #ffffff;
+  border: none;
+  outline: none;
+  background-color: #666;
+  border-radius: 20px;
+  padding: 0.2em 0.8em;
+  margin-right: 12px;
+}
+
+.line-container .screen .screen-footer .screen-footer__right .fa-paper-plane {
+  padding-top: 5px;
+  font-size: 2.2rem;
+}
+
+.line-container .screen #messages li.another {
+  background-color: #fff;
+  color: #333;
+  text-align: left;
+  margin: 0 auto 24px 12px;
+}
+
+.line-container .screen #messages li.another .username {
+  -webkit-transform: scale(0.8);
+          transform: scale(0.8);
+  display: block;
+  font-size: 1rem;
+  color: #fff;
+  position: absolute;
+  top: -17px;
+  left: 3px;
+}
+
+.line-container .screen #messages li.another .message-date-time {
+  text-align-last: left;
+  position: absolute;
+  bottom: 1px;
+  left: initial;
+  right: -49px;
 }
 /*# sourceMappingURL=style.css.map */
