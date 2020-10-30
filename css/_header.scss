@@ -1,0 +1,218 @@
+
+$icon-size:80px;
+$w: 100%;
+@import url(https://fonts.googleapis.com/css?family=Open+Sans);
+
+@mixin lightsaber($color){
+  background:mix($color,#fff,10%);
+  box-shadow:$color 0px 0px 0px 2px;
+  &:hover {
+    box-shadow:$color 0px 0px 20px 2px;
+    text-shadow:$color 0px 0px 6px,$color 0px 0px 10px;
+  }
+}
+
+#container {
+  width: $icon-size;
+  height:$icon-size;
+  position:absolute;
+  top:0%;
+  right:0%;
+  z-index: 9999;
+}
+
+#burger {
+  cursor:pointer;
+  opacity:0;
+  animation:fadein 0.2s ease 1s forwards;
+  overflow:hidden;
+  position:relative;
+  width:100%;
+  height:100%;
+  %burgersection {
+    display:block;
+    position:absolute;
+    left:50%;
+    transform:translate(-50%,-50%) rotate(0deg);
+    height:10%;
+    width:70%;
+    transform-origin:50% 50%;
+    transition: top 0.4s ease 0.4s,
+      transform 0.4s ease 0.4s;
+    &:before, &:after {
+      content:"";
+      display:block;
+      height:40%;
+      background:white;
+      position:absolute;
+      top:50%;
+      transform:translate(0%,-45%);
+      transition:background 0.2s ease,
+        box-shadow 0.2s ease;
+    }
+    &:before {
+      left:0;
+      width:calc(-1px + 75%);
+      border-radius:10px 0px 0px 10px;
+    }
+    &:after {
+      right:0;
+      width:calc(-1px + 25%);
+    }
+  }
+  
+  &:hover {
+    .bun {
+      &.top:before {
+        background:#FEE;
+        box-shadow:#F00 0px 0px 10px 1px;
+      }
+      &.bottom:before {
+        background:#DFF;
+        box-shadow:#0FF 0px 0px 10px 1px;
+      }
+    }
+    .filling {
+      &:before {
+        background:#EFE;
+        box-shadow:#0F0 0px 0px 10px 1px;
+      }
+    }
+  }
+  
+  .bun {
+    @extend %burgersection;
+    &.top {
+      top:25%;
+    }
+    &.bottom {
+      top:75%;
+    }
+  }
+  .filling {
+    @extend %burgersection;
+    top:50%;
+    transform:translate(-50%,-50%) rotate(180deg);
+    animation:green-ls-out 0.8s ease forwards;
+
+  }
+  
+  &.active {
+    .bun {
+      border-radius: 3px;
+      top:50%;
+      transition: top 0.4s ease,
+        transform 0.4s ease;
+      &.top {
+        transform:translate(-50%,-50%) rotate(-225deg);
+      }
+      &.bottom {
+        transform:translate(-50%,-50%) rotate(405deg);
+      }
+    }
+    .filling {
+      transform: translate(-50%,-50%) rotate(-90deg);
+      animation:green-ls-in 0.8s ease forwards;
+    }
+  }
+}
+
+nav {
+  z-index: 9998;
+  &.show {
+    transform:translatex(0%);
+  }
+  color:white;
+  background:#111;
+  position:absolute;
+  transform:translatex(-100%);
+  transition:transform 0.2s ease;
+  top:0px;
+  bottom:0px;
+  padding-right:16px;
+  width:$w;
+  ul {
+    list-style:none;
+    padding: 60px 0;
+    //font-weight:bolder;
+    li {
+      @include lightsaber(#4df);
+      font-family: 'jedi';
+      font-size:2.4rem;
+      line-height:1.25em;
+      padding:0px;
+      padding-left:0px;
+      margin:16px 0px;
+      width:0;
+      border-radius:0px 100px 100px 0px;
+      transition:width 0.2s ease,
+        padding 0.2s ease,
+        color 0.2s ease,
+        text-shadow 0.2s ease;
+      &:hover {
+        width:100%;
+        padding:0px 16px 0px 0px;
+        color:black;
+      }
+      div {
+        width: 280px;
+      }
+      a {
+        display:block;
+        text-decoration:none;
+        width:$w;
+        color:inherit;
+        padding-left:16px;
+      }
+      span {
+        padding-left:16px;
+      }
+      &.green {
+        @include lightsaber(#0F0);
+        margin-bottom: 120px;
+      }
+      &.red {
+        @include lightsaber(#F00);
+        font-size: 1.6rem;
+      }
+      &.purple {
+        @include lightsaber(#c0c);
+      }
+      &.yellow {
+        @include lightsaber(#FF0);
+      }
+    }
+  }
+}
+
+@keyframes green-ls-in {
+  0% { 
+    transform: translate(-50%,-50%) rotate(180deg); }
+  50% { 
+    transform: translate(-50%,-50%) rotate(-90deg); }
+  100% {
+    transform: translate(-50%,-50%) rotate(-90deg) translate(200%,0%);}
+}
+
+@keyframes green-ls-out {
+  0% {
+    transform: translate(-50%,-200%) rotate(-90deg);}
+  50% { 
+    transform: translate(-50%,-50%) rotate(-90deg); }
+
+  100% { 
+    transform: translate(-50%,-50%) rotate(180deg); }
+}
+
+@keyframes fadein {
+  from {
+    Opacity:0;
+  }
+  to {
+    Opacity:1;
+  }
+}
+
+
+
+

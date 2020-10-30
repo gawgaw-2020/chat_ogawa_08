@@ -1,0 +1,1289 @@
+/* A Modern CSS Reset */
+@import url(https://fonts.googleapis.com/css?family=Open+Sans);
+*, *::before, *::after {
+  -webkit-box-sizing: border-box;
+          box-sizing: border-box;
+}
+
+ul[class], ol[class] {
+  padding: 0;
+}
+
+body, h1, h2, h3, h4, p, ul[class], ol[class], figure, blockquote, dl, dd {
+  margin: 0;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  min-height: 100vh;
+  text-rendering: optimizeSpeed;
+  line-height: 1.5;
+}
+
+ul[class], ol[class] {
+  list-style: none;
+}
+
+a:not([class]) {
+  text-decoration-skip-ink: auto;
+}
+
+img, picture {
+  max-width: 100%;
+  display: block;
+}
+
+article > * + * {
+  margin-top: 1em;
+}
+
+input, button, textarea, select {
+  font: inherit;
+}
+
+img:not([alt]) {
+  -webkit-filter: blur(10px);
+          filter: blur(10px);
+}
+
+@media (prefers-reduced-motion: reduce) {
+  * {
+    -webkit-animation-duration: .01ms !important;
+            animation-duration: .01ms !important;
+    -webkit-animation-iteration-count: 1 !important;
+            animation-iteration-count: 1 !important;
+    -webkit-transition-duration: .01ms !important;
+            transition-duration: .01ms !important;
+    scroll-behavior: auto !important;
+  }
+}
+
+html {
+  font-size: 62.5%;
+}
+
+body {
+  font-size: 1.0rem;
+  color: #333;
+  background-color: #f7f7f7;
+  font-family: "Helvetica Neue", Arial, "Hiragino Kaku Gothic ProN", "Hiragino Sans", Meiryo, sans-serif;
+  letter-spacing: inherit;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+a {
+  color: #333;
+  text-decoration: none;
+}
+
+img {
+  width: 100%;
+  height: auto;
+}
+
+.lightsaber {
+  position: relative;
+}
+
+.lightsaber label {
+  cursor: pointer;
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  z-index: 88;
+  text-indent: -9999px;
+  width: 15px;
+  height: 50px;
+  border-bottom: solid 4px grey;
+  border-top: solid 5px grey;
+  border-radius: 5px;
+  -moz-border-radius: 5px;
+  -webkit-border-radius: 5px;
+  -o-border-radius: 5px;
+  -ms-border-radius: 5px;
+  background: #e2e2e2;
+  /* Old browsers */
+  background: -webkit-gradient(linear, left top, right top, from(#e2e2e2), color-stop(50%, #dbdbdb), color-stop(51%, #d1d1d1), to(#fefefe));
+  background: linear-gradient(to right, #e2e2e2 0%, #dbdbdb 50%, #d1d1d1 51%, #fefefe 100%);
+  /* W3C */
+  /* FF3.6+ */
+  /* Chrome,Safari4+ */
+  /* Chrome10+,Safari5.1+ */
+  /* Opera 11.10+ */
+  background: -ms-linear-gradient(left, #e2e2e2 0%, #dbdbdb 50%, #d1d1d1 51%, #fefefe 100%);
+  /* IE10+ */
+  filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#e2e2e2', endColorstr='#fefefe',GradientType=1 );
+  /* IE6-9 */
+}
+
+.lightsaber .switch {
+  background: #B94A37;
+  width: 5px;
+  height: 10px;
+  display: block;
+  position: absolute;
+  bottom: 25px;
+  left: 13px;
+  transition: left 200ms;
+  -moz-transition: left 200ms;
+  -webkit-transition: left 200ms;
+  -o-transition: left 200ms;
+  -ms-transition: left 200ms;
+  border-radius: 10px;
+  -moz-border-radius: 10px;
+  -webkit-border-radius: 10px;
+  -o-border-radius: 10px;
+  -ms-border-radius: 10px;
+}
+
+.lightsaber input[type=checkbox] {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  opacity: 0;
+  -moz-opacity: 0;
+  -webkit-opacity: 0;
+  -o-opacity: 0;
+  -ms-opacity: 0;
+  z-index: 77;
+}
+
+.lightsaber .plasma {
+  transition: height 300ms;
+  -moz-transition: height 300ms;
+  -webkit-transition: height 300ms;
+  -o-transition: height 300ms;
+  -ms-transition: height 300ms;
+  border-radius: 12px 12px 0 0;
+  position: absolute;
+  bottom: 55px;
+  left: 2px;
+  width: 10px;
+  display: block;
+  filter: blur(1px);
+  -moz-filter: blur(1px);
+  -webkit-filter: blur(1px);
+  -o-filter: blur(1px);
+  -ms-filter: blur(1px);
+  height: 0;
+}
+
+.lightsaber input[type=checkbox]:checked ~ div.plasma {
+  height: 250px;
+}
+
+.lightsaber input[type=checkbox]:hover ~ div.switch {
+  background: #c09853;
+  left: 12px;
+}
+
+.lightsaber input[type=checkbox]:checked ~ div.switch {
+  background: #468847;
+}
+
+.yoda {
+  background: #87dc5a;
+  /* Old browsers */
+  background: -webkit-gradient(linear, left top, right top, from(#87dc5a), color-stop(30%, #fefefe), color-stop(50%, #fefefe), color-stop(70%, #fefefe), to(#87dc5a));
+  background: linear-gradient(to right, #87dc5a 0%, #fefefe 30%, #fefefe 50%, #fefefe 70%, #87dc5a 100%);
+  /* W3C */
+  /* FF3.6+ */
+  /* Chrome,Safari4+ */
+  /* Chrome10+,Safari5.1+ */
+  /* Opera 11.10+ */
+  background: -ms-linear-gradient(left, #87dc5a 0%, #fefefe 30%, #fefefe 50%, #fefefe 70%, #87dc5a 100%);
+  /* IE10+ */
+  filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#87dc5a', endColorstr='#87dc5a',GradientType=1 );
+  /* IE6-9 */
+  animation-name: yoda;
+  -moz-animation-name: yoda;
+  -webkit-animation-name: yoda;
+  -o-animation-name: yoda;
+  -ms-animation-name: yoda;
+  animation-duration: 2s;
+  -moz-animation-duration: 2s;
+  -webkit-animation-duration: 2s;
+  -o-animation-duration: 2s;
+  -ms-animation-duration: 2s;
+  animation-iteration-count: infinite;
+  -moz-animation-iteration-count: infinite;
+  -webkit-animation-iteration-count: infinite;
+  -o-animation-iteration-count: infinite;
+  -ms-animation-iteration-count: infinite;
+}
+
+.vader {
+  background: #e51115;
+  /* Old browsers */
+  background: -webkit-gradient(linear, left top, right top, from(#e51115), color-stop(30%, #fefefe), color-stop(47%, #fefefe), color-stop(71%, #fefefe), to(#e51115));
+  background: linear-gradient(to right, #e51115 0%, #fefefe 30%, #fefefe 47%, #fefefe 71%, #e51115 100%);
+  /* W3C */
+  /* FF3.6+ */
+  /* Chrome,Safari4+ */
+  /* Chrome10+,Safari5.1+ */
+  /* Opera 11.10+ */
+  background: -ms-linear-gradient(left, #e51115 0%, #fefefe 30%, #fefefe 47%, #fefefe 71%, #e51115 100%);
+  /* IE10+ */
+  filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#e51115', endColorstr='#e51115',GradientType=1 );
+  /* IE6-9 */
+  animation-name: vader;
+  -moz-animation-name: vader;
+  -webkit-animation-name: vader;
+  -o-animation-name: vader;
+  -ms-animation-name: vader;
+  animation-duration: 2s;
+  -moz-animation-duration: 2s;
+  -webkit-animation-duration: 2s;
+  -o-animation-duration: 2s;
+  -ms-animation-duration: 2s;
+  animation-iteration-count: infinite;
+  -moz-animation-iteration-count: infinite;
+  -webkit-animation-iteration-count: infinite;
+  -o-animation-iteration-count: infinite;
+  -ms-animation-iteration-count: infinite;
+}
+
+.windu {
+  background: #ca74dd;
+  /* Old browsers */
+  background: -webkit-gradient(linear, left top, right top, from(#ca74dd), color-stop(30%, #fefefe), color-stop(47%, #fefefe), color-stop(71%, #fefefe), to(#ca74dd));
+  background: linear-gradient(to right, #ca74dd 0%, #fefefe 30%, #fefefe 47%, #fefefe 71%, #ca74dd 100%);
+  /* W3C */
+  /* FF3.6+ */
+  /* Chrome,Safari4+ */
+  /* Chrome10+,Safari5.1+ */
+  /* Opera 11.10+ */
+  background: -ms-linear-gradient(left, #ca74dd 0%, #fefefe 30%, #fefefe 47%, #fefefe 71%, #ca74dd 100%);
+  /* IE10+ */
+  filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#ca74dd', endColorstr='#ca74dd',GradientType=1 );
+  /* IE6-9 */
+  animation-name: windu;
+  -moz-animation-name: windu;
+  -webkit-animation-name: windu;
+  -o-animation-name: windu;
+  -ms-animation-name: windu;
+  animation-duration: 2s;
+  -moz-animation-duration: 2s;
+  -webkit-animation-duration: 2s;
+  -o-animation-duration: 2s;
+  -ms-animation-duration: 2s;
+  animation-iteration-count: infinite;
+  -moz-animation-iteration-count: infinite;
+  -webkit-animation-iteration-count: infinite;
+  -o-animation-iteration-count: infinite;
+  -ms-animation-iteration-count: infinite;
+}
+
+.obi-wan {
+  background: #3784d6;
+  /* Old browsers */
+  background: -webkit-gradient(linear, left top, right top, from(#3784d6), color-stop(30%, #fefefe), color-stop(47%, #fefefe), color-stop(71%, #fefefe), to(#3784d6));
+  background: linear-gradient(to right, #3784d6 0%, #fefefe 30%, #fefefe 47%, #fefefe 71%, #3784d6 100%);
+  /* W3C */
+  /* FF3.6+ */
+  /* Chrome,Safari4+ */
+  /* Chrome10+,Safari5.1+ */
+  /* Opera 11.10+ */
+  background: -ms-linear-gradient(left, #3784d6 0%, #fefefe 30%, #fefefe 47%, #fefefe 71%, #3784d6 100%);
+  /* IE10+ */
+  filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#3784d6', endColorstr='#3784d6',GradientType=1 );
+  /* IE6-9 */
+  animation-name: obi-wan;
+  -moz-animation-name: obi-wan;
+  -webkit-animation-name: obi-wan;
+  -o-animation-name: obi-wan;
+  -ms-animation-name: obi-wan;
+  animation-duration: 2s;
+  -moz-animation-duration: 2s;
+  -webkit-animation-duration: 2s;
+  -o-animation-duration: 2s;
+  -ms-animation-duration: 2s;
+  animation-iteration-count: infinite;
+  -moz-animation-iteration-count: infinite;
+  -webkit-animation-iteration-count: infinite;
+  -o-animation-iteration-count: infinite;
+  -ms-animation-iteration-count: infinite;
+}
+
+div {
+  -webkit-transform: translateZ(0);
+  transform: translateZ(0);
+}
+
+/* Animations */
+@keyframes yoda {
+  from {
+    -webkit-box-shadow: 0 0 10px #7EC855;
+            box-shadow: 0 0 10px #7EC855;
+  }
+  50% {
+    -webkit-box-shadow: 0 0 16px #7EC855;
+            box-shadow: 0 0 16px #7EC855;
+  }
+  to {
+    -webkit-box-shadow: 0 0 10px #7EC855;
+            box-shadow: 0 0 10px #7EC855;
+  }
+}
+
+@-webkit-keyframes yoda {
+  from {
+    -webkit-box-shadow: 0 0 10px #7EC855;
+            box-shadow: 0 0 10px #7EC855;
+  }
+  50% {
+    -webkit-box-shadow: 0 0 16px #7EC855;
+            box-shadow: 0 0 16px #7EC855;
+  }
+  to {
+    -webkit-box-shadow: 0 0 10px #7EC855;
+            box-shadow: 0 0 10px #7EC855;
+  }
+}
+
+@keyframes vader {
+  from {
+    -webkit-box-shadow: 0 0 10px #e51115;
+            box-shadow: 0 0 10px #e51115;
+  }
+  50% {
+    -webkit-box-shadow: 0 0 16px #e51115;
+            box-shadow: 0 0 16px #e51115;
+  }
+  to {
+    -webkit-box-shadow: 0 0 10px #e51115;
+            box-shadow: 0 0 10px #e51115;
+  }
+}
+
+@-webkit-keyframes vader {
+  from {
+    -webkit-box-shadow: 0 0 10px #e51115;
+            box-shadow: 0 0 10px #e51115;
+  }
+  50% {
+    -webkit-box-shadow: 0 0 16px #e51115;
+            box-shadow: 0 0 16px #e51115;
+  }
+  to {
+    -webkit-box-shadow: 0 0 10px #e51115;
+            box-shadow: 0 0 10px #e51115;
+  }
+}
+
+@keyframes windu {
+  from {
+    -webkit-box-shadow: 0 0 10px #ca74dd;
+            box-shadow: 0 0 10px #ca74dd;
+  }
+  50% {
+    -webkit-box-shadow: 0 0 16px #ca74dd;
+            box-shadow: 0 0 16px #ca74dd;
+  }
+  to {
+    -webkit-box-shadow: 0 0 10px #ca74dd;
+            box-shadow: 0 0 10px #ca74dd;
+  }
+}
+
+@-webkit-keyframes windu {
+  from {
+    -webkit-box-shadow: 0 0 10px #ca74dd;
+            box-shadow: 0 0 10px #ca74dd;
+  }
+  50% {
+    -webkit-box-shadow: 0 0 16px #ca74dd;
+            box-shadow: 0 0 16px #ca74dd;
+  }
+  to {
+    -webkit-box-shadow: 0 0 10px #ca74dd;
+            box-shadow: 0 0 10px #ca74dd;
+  }
+}
+
+@keyframes obi-wan {
+  from {
+    -webkit-box-shadow: 0 0 10px #3784d6;
+            box-shadow: 0 0 10px #3784d6;
+  }
+  50% {
+    -webkit-box-shadow: 0 0 16px #3784d6;
+            box-shadow: 0 0 16px #3784d6;
+  }
+  to {
+    -webkit-box-shadow: 0 0 10px #3784d6;
+            box-shadow: 0 0 10px #3784d6;
+  }
+}
+
+@-webkit-keyframes obi-wan {
+  from {
+    -webkit-box-shadow: 0 0 10px #3784d6;
+            box-shadow: 0 0 10px #3784d6;
+  }
+  50% {
+    -webkit-box-shadow: 0 0 16px #3784d6;
+            box-shadow: 0 0 16px #3784d6;
+  }
+  to {
+    -webkit-box-shadow: 0 0 10px #3784d6;
+            box-shadow: 0 0 10px #3784d6;
+  }
+}
+
+/*
+Name: StarWarsIntro.css
+URI: polarnotion.github.io/starwarsintro
+Author: Polar Notion
+Author URI: http://polarnotion.com/
+Description: A simple CSS library for creating a Star Wars Intro Crawl. May the Force be with you.
+Version: 1.0
+*/
+.main-logo {
+  font-family: 'jedi', san-serif;
+}
+
+.star-wars-intro {
+  width: 100%;
+  height: 500px;
+  font-family: "Droid Sans", arial, verdana, sans-serif;
+  font-weight: 700;
+  color: #EBD71C;
+  overflow: hidden;
+  position: relative;
+}
+
+.star-wars-intro p.intro-text {
+  height: 0;
+  position: relative;
+  top: 50%;
+  left: 50%;
+  -webkit-transform: translate(-50%, -50%);
+          transform: translate(-50%, -50%);
+  max-width: 16em;
+  font-size: 200%;
+  font-weight: 400;
+  color: #4ee;
+  opacity: 0;
+  z-index: 1;
+  text-align: center;
+  -webkit-animation: intro 2.5s ease-out;
+  animation: intro 2.5s ease-out;
+}
+
+.star-wars-intro .main-content {
+  margin-left: auto;
+  margin-right: auto;
+  position: absolute;
+  z-index: 3;
+  width: 98%;
+  height: 50em;
+  bottom: 0;
+  font-size: 80px;
+  font-weight: bold;
+  text-align: justify;
+  overflow: hidden;
+  -webkit-transform-origin: 50% 100%;
+          transform-origin: 50% 100%;
+  -webkit-transform: perspective(350px) rotateX(25deg);
+          transform: perspective(350px) rotateX(25deg);
+}
+
+.star-wars-intro .main-content:after {
+  position: absolute;
+  content: ' ';
+  top: 0;
+  bottom: 60%;
+  background-image: -webkit-gradient(linear, left top, left bottom, from(black), to(transparent));
+  background-image: linear-gradient(top, black 0%, transparent 100%);
+  pointer-events: none;
+}
+
+.star-wars-intro .space-button {
+  color: #EBD71C;
+  border: 12px solid #EBD71C;
+  padding: 20px;
+  background: transparent;
+  text-decoration: none;
+  margin: 0 auto;
+  display: block;
+  text-align: center;
+}
+
+.star-wars-intro .space-button:hover {
+  background-color: #D2BE03;
+  border-color: #D2BE03;
+  color: black;
+}
+
+.star-wars-intro .space-button:active,
+.star-wars-intro .space-button:focus {
+  background-color: #B8A40A;
+  border-color: #B8A40A;
+  color: black;
+}
+
+.star-wars-intro .title-content {
+  position: absolute;
+  top: 100%;
+  -webkit-animation: scroll 45s linear 7s forwards infinite;
+          animation: scroll 45s linear 7s forwards infinite;
+}
+
+.star-wars-intro .title-content > .content-header {
+  text-align: center;
+  margin-bottom: 20px;
+}
+
+.content-body {
+  margin-bottom: 40px;
+}
+
+/* Main Image Styles */
+.star-wars-intro .main-logo {
+  height: auto;
+  position: absolute;
+  width: 2.6em;
+  left: 52%;
+  top: 20vh;
+  font-size: 30em;
+  text-align: center;
+  margin-left: -1.3em;
+  line-height: 0.8em;
+  letter-spacing: -0.05em;
+  color: #000;
+  text-shadow: -2px -2px 0 #EBD71C, 2px -2px 0 #EBD71C, -2px 2px 0 #EBD71C, 2px 2px 0 #EBD71C;
+  opacity: 0;
+  z-index: 1;
+  -webkit-animation: logo 7s ease-out 2.5s;
+  animation: logo 7s ease-out 2.5s;
+}
+
+.star-wars-intro .main-logo > img {
+  max-width: 100%;
+}
+
+@-webkit-keyframes intro {
+  0% {
+    opacity: 1;
+  }
+  90% {
+    opacity: 1;
+  }
+  100% {
+    opacity: 0;
+  }
+}
+
+@keyframes intro {
+  0% {
+    opacity: 1;
+  }
+  90% {
+    opacity: 1;
+  }
+  100% {
+    opacity: 0;
+  }
+}
+
+@-webkit-keyframes logo {
+  0% {
+    -webkit-transform: scale(1);
+    opacity: 1;
+  }
+  50% {
+    opacity: 1;
+  }
+  100% {
+    -webkit-transform: scale(0.1);
+    opacity: 0;
+  }
+}
+
+@keyframes logo {
+  0% {
+    -webkit-transform: scale(1);
+            transform: scale(1);
+    opacity: 1;
+  }
+  50% {
+    opacity: 1;
+  }
+  100% {
+    -webkit-transform: scale(0.1);
+            transform: scale(0.1);
+    opacity: 0;
+  }
+}
+
+@-webkit-keyframes scroll {
+  0% {
+    top: 100%;
+  }
+  80% {
+    opacity: 0.7;
+  }
+  100% {
+    top: 30%;
+    opacity: 0;
+  }
+}
+
+@keyframes scroll {
+  0% {
+    top: 100%;
+  }
+  80% {
+    opacity: 0.7;
+  }
+  100% {
+    top: 30%;
+    opacity: 0;
+  }
+}
+
+@media screen and (max-width: 720px) {
+  @-webkit-keyframes scroll {
+    0% {
+      top: 100%;
+    }
+    80% {
+      opacity: 0.7;
+    }
+    100% {
+      top: -20%;
+      opacity: 0;
+    }
+  }
+  @keyframes scroll {
+    0% {
+      top: 100%;
+    }
+    80% {
+      opacity: 0.7;
+    }
+    100% {
+      top: -20%;
+      opacity: 0;
+    }
+  }
+  .star-wars-intro .main-content {
+    font-size: 35px;
+  }
+  .star-wars-intro .title-content {
+    position: absolute;
+    top: 100%;
+    -webkit-animation: scroll 30s linear 7s infinite forwards;
+            animation: scroll 30s linear 7s infinite forwards;
+  }
+}
+
+.section-inner {
+  width: 95%;
+  margin: 0 auto;
+}
+
+.heading {
+  text-align: center;
+}
+
+.heading--level1 {
+  font-size: 2.4rem;
+}
+
+.heading--level2 {
+  font-size: 1.8rem;
+}
+
+.heading--level3 {
+  font-size: 1.6rem;
+}
+
+.text {
+  font-size: 1.6rem;
+  text-shadow: 0 0 4px rgba(255, 255, 255, 0.8);
+}
+
+.text--jedi {
+  font-family: 'jedi';
+  font-size: 2.4rem;
+}
+
+.btn {
+  display: inline-block;
+  text-align: center;
+  font-size: 2.4rem;
+  font-family: 'jedi';
+  text-shadow: 0 0 2px rgba(255, 255, 255, 0.8);
+  width: 100%;
+  padding: 0.5em 1em;
+  background-color: transparent;
+  -webkit-transition: 0.2s;
+  transition: 0.2s;
+}
+
+.btn--round {
+  border-radius: 2em;
+}
+
+.btn--light-side {
+  color: #ebcd29;
+  background-color: rgba(214, 224, 129, 0.123);
+  -webkit-box-shadow: 1px -1px 3px 1px #c5c56f inset, -1px 1px 3px 1px #c5c56f inset;
+          box-shadow: 1px -1px 3px 1px #c5c56f inset, -1px 1px 3px 1px #c5c56f inset;
+}
+
+.btn--light-side:hover {
+  text-shadow: 0 0 5px rgba(0, 0, 0, 0.8);
+  background-color: rgba(214, 224, 129, 0.4);
+}
+
+.btn--dark-side {
+  color: #ca0000;
+  background-color: rgba(226, 62, 62, 0.137);
+  -webkit-box-shadow: 1px -1px 3px 1px #D1382C inset, -1px 1px 3px 1px #D1382C inset;
+          box-shadow: 1px -1px 3px 1px #D1382C inset, -1px 1px 3px 1px #D1382C inset;
+}
+
+.btn--dark-side:hover {
+  background-color: rgba(226, 62, 62, 0.3);
+}
+
+.btn--droid {
+  color: #23c2ce;
+  text-shadow: 0 0 2px #23c2ce;
+  background-color: rgba(62, 188, 226, 0.137);
+  -webkit-box-shadow: 1px -1px 3px 1px #2cb0d1 inset, -1px 1px 3px 1px #2cb0d1 inset;
+          box-shadow: 1px -1px 3px 1px #2cb0d1 inset, -1px 1px 3px 1px #2cb0d1 inset;
+}
+
+.btn--droid:hover {
+  background-color: rgba(62, 188, 226, 0.4);
+}
+
+.btn--disable {
+  pointer-events: none;
+  color: #ddd;
+  background-color: #444;
+  -webkit-box-shadow: 1px -1px 3px 1px #ddd inset, -1px 1px 3px 1px #ddd inset;
+          box-shadow: 1px -1px 3px 1px #ddd inset, -1px 1px 3px 1px #ddd inset;
+}
+
+.content-box {
+  padding: 2em;
+}
+
+.content-box--light-side {
+  background-color: rgba(214, 224, 129, 0.123);
+  -webkit-box-shadow: 1px -1px 3px 1px #c5c56f inset, -1px 1px 3px 1px #c5c56f inset;
+          box-shadow: 1px -1px 3px 1px #c5c56f inset, -1px 1px 3px 1px #c5c56f inset;
+}
+
+.content-box--dark-side {
+  background-color: rgba(226, 62, 62, 0.137);
+  -webkit-box-shadow: 1px -1px 3px 1px #D1382C inset, -1px 1px 3px 1px #D1382C inset;
+          box-shadow: 1px -1px 3px 1px #D1382C inset, -1px 1px 3px 1px #D1382C inset;
+}
+
+.content-box--droid {
+  background-color: rgba(62, 188, 226, 0.137);
+  -webkit-box-shadow: 1px -1px 3px 1px #2cb0d1 inset, -1px 1px 3px 1px #2cb0d1 inset;
+          box-shadow: 1px -1px 3px 1px #2cb0d1 inset, -1px 1px 3px 1px #2cb0d1 inset;
+}
+
+#container {
+  width: 80px;
+  height: 80px;
+  position: absolute;
+  top: 0%;
+  right: 0%;
+  z-index: 9999;
+}
+
+#burger {
+  cursor: pointer;
+  opacity: 0;
+  -webkit-animation: fadein 0.2s ease 1s forwards;
+          animation: fadein 0.2s ease 1s forwards;
+  overflow: hidden;
+  position: relative;
+  width: 100%;
+  height: 100%;
+}
+
+#burger .bun, #burger .filling {
+  display: block;
+  position: absolute;
+  left: 50%;
+  -webkit-transform: translate(-50%, -50%) rotate(0deg);
+          transform: translate(-50%, -50%) rotate(0deg);
+  height: 10%;
+  width: 70%;
+  -webkit-transform-origin: 50% 50%;
+          transform-origin: 50% 50%;
+  -webkit-transition: top 0.4s ease 0.4s, -webkit-transform 0.4s ease 0.4s;
+  transition: top 0.4s ease 0.4s, -webkit-transform 0.4s ease 0.4s;
+  transition: top 0.4s ease 0.4s, transform 0.4s ease 0.4s;
+  transition: top 0.4s ease 0.4s, transform 0.4s ease 0.4s, -webkit-transform 0.4s ease 0.4s;
+}
+
+#burger .bun:before, #burger .filling:before, #burger .bun:after, #burger .filling:after {
+  content: "";
+  display: block;
+  height: 40%;
+  background: white;
+  position: absolute;
+  top: 50%;
+  -webkit-transform: translate(0%, -45%);
+          transform: translate(0%, -45%);
+  -webkit-transition: background 0.2s ease, -webkit-box-shadow 0.2s ease;
+  transition: background 0.2s ease, -webkit-box-shadow 0.2s ease;
+  transition: background 0.2s ease, box-shadow 0.2s ease;
+  transition: background 0.2s ease, box-shadow 0.2s ease, -webkit-box-shadow 0.2s ease;
+}
+
+#burger .bun:before, #burger .filling:before {
+  left: 0;
+  width: calc(-1px + 75%);
+  border-radius: 10px 0px 0px 10px;
+}
+
+#burger .bun:after, #burger .filling:after {
+  right: 0;
+  width: calc(-1px + 25%);
+}
+
+#burger:hover .bun.top:before {
+  background: #FEE;
+  -webkit-box-shadow: #F00 0px 0px 10px 1px;
+          box-shadow: #F00 0px 0px 10px 1px;
+}
+
+#burger:hover .bun.bottom:before {
+  background: #DFF;
+  -webkit-box-shadow: #0FF 0px 0px 10px 1px;
+          box-shadow: #0FF 0px 0px 10px 1px;
+}
+
+#burger:hover .filling:before {
+  background: #EFE;
+  -webkit-box-shadow: #0F0 0px 0px 10px 1px;
+          box-shadow: #0F0 0px 0px 10px 1px;
+}
+
+#burger .bun.top {
+  top: 25%;
+}
+
+#burger .bun.bottom {
+  top: 75%;
+}
+
+#burger .filling {
+  top: 50%;
+  -webkit-transform: translate(-50%, -50%) rotate(180deg);
+          transform: translate(-50%, -50%) rotate(180deg);
+  -webkit-animation: green-ls-out 0.8s ease forwards;
+          animation: green-ls-out 0.8s ease forwards;
+}
+
+#burger.active .bun {
+  border-radius: 3px;
+  top: 50%;
+  -webkit-transition: top 0.4s ease, -webkit-transform 0.4s ease;
+  transition: top 0.4s ease, -webkit-transform 0.4s ease;
+  transition: top 0.4s ease, transform 0.4s ease;
+  transition: top 0.4s ease, transform 0.4s ease, -webkit-transform 0.4s ease;
+}
+
+#burger.active .bun.top {
+  -webkit-transform: translate(-50%, -50%) rotate(-225deg);
+          transform: translate(-50%, -50%) rotate(-225deg);
+}
+
+#burger.active .bun.bottom {
+  -webkit-transform: translate(-50%, -50%) rotate(405deg);
+          transform: translate(-50%, -50%) rotate(405deg);
+}
+
+#burger.active .filling {
+  -webkit-transform: translate(-50%, -50%) rotate(-90deg);
+          transform: translate(-50%, -50%) rotate(-90deg);
+  -webkit-animation: green-ls-in 0.8s ease forwards;
+          animation: green-ls-in 0.8s ease forwards;
+}
+
+nav {
+  z-index: 9998;
+  color: white;
+  background: #111;
+  position: absolute;
+  -webkit-transform: translatex(-100%);
+          transform: translatex(-100%);
+  -webkit-transition: -webkit-transform 0.2s ease;
+  transition: -webkit-transform 0.2s ease;
+  transition: transform 0.2s ease;
+  transition: transform 0.2s ease, -webkit-transform 0.2s ease;
+  top: 0px;
+  bottom: 0px;
+  padding-right: 16px;
+  width: 100%;
+}
+
+nav.show {
+  -webkit-transform: translatex(0%);
+          transform: translatex(0%);
+}
+
+nav ul {
+  list-style: none;
+  padding: 60px 0;
+}
+
+nav ul li {
+  background: #ecfcff;
+  -webkit-box-shadow: #4df 0px 0px 0px 2px;
+          box-shadow: #4df 0px 0px 0px 2px;
+  font-family: 'jedi';
+  font-size: 2.4rem;
+  line-height: 1.25em;
+  padding: 0px;
+  padding-left: 0px;
+  margin: 16px 0px;
+  width: 0;
+  border-radius: 0px 100px 100px 0px;
+  -webkit-transition: width 0.2s ease, padding 0.2s ease, color 0.2s ease, text-shadow 0.2s ease;
+  transition: width 0.2s ease, padding 0.2s ease, color 0.2s ease, text-shadow 0.2s ease;
+}
+
+nav ul li:hover {
+  -webkit-box-shadow: #4df 0px 0px 20px 2px;
+          box-shadow: #4df 0px 0px 20px 2px;
+  text-shadow: #4df 0px 0px 6px, #4df 0px 0px 10px;
+}
+
+nav ul li:hover {
+  width: 100%;
+  padding: 0px 16px 0px 0px;
+  color: black;
+}
+
+nav ul li div {
+  width: 280px;
+}
+
+nav ul li a {
+  display: block;
+  text-decoration: none;
+  width: 100%;
+  color: inherit;
+  padding-left: 16px;
+}
+
+nav ul li span {
+  padding-left: 16px;
+}
+
+nav ul li.green {
+  background: #e6ffe6;
+  -webkit-box-shadow: #0F0 0px 0px 0px 2px;
+          box-shadow: #0F0 0px 0px 0px 2px;
+  margin-bottom: 120px;
+}
+
+nav ul li.green:hover {
+  -webkit-box-shadow: #0F0 0px 0px 20px 2px;
+          box-shadow: #0F0 0px 0px 20px 2px;
+  text-shadow: #0F0 0px 0px 6px, #0F0 0px 0px 10px;
+}
+
+nav ul li.red {
+  background: #ffe6e6;
+  -webkit-box-shadow: #F00 0px 0px 0px 2px;
+          box-shadow: #F00 0px 0px 0px 2px;
+  font-size: 1.6rem;
+}
+
+nav ul li.red:hover {
+  -webkit-box-shadow: #F00 0px 0px 20px 2px;
+          box-shadow: #F00 0px 0px 20px 2px;
+  text-shadow: #F00 0px 0px 6px, #F00 0px 0px 10px;
+}
+
+nav ul li.purple {
+  background: #fae6fa;
+  -webkit-box-shadow: #c0c 0px 0px 0px 2px;
+          box-shadow: #c0c 0px 0px 0px 2px;
+}
+
+nav ul li.purple:hover {
+  -webkit-box-shadow: #c0c 0px 0px 20px 2px;
+          box-shadow: #c0c 0px 0px 20px 2px;
+  text-shadow: #c0c 0px 0px 6px, #c0c 0px 0px 10px;
+}
+
+nav ul li.yellow {
+  background: #ffffe6;
+  -webkit-box-shadow: #FF0 0px 0px 0px 2px;
+          box-shadow: #FF0 0px 0px 0px 2px;
+}
+
+nav ul li.yellow:hover {
+  -webkit-box-shadow: #FF0 0px 0px 20px 2px;
+          box-shadow: #FF0 0px 0px 20px 2px;
+  text-shadow: #FF0 0px 0px 6px, #FF0 0px 0px 10px;
+}
+
+@-webkit-keyframes green-ls-in {
+  0% {
+    -webkit-transform: translate(-50%, -50%) rotate(180deg);
+            transform: translate(-50%, -50%) rotate(180deg);
+  }
+  50% {
+    -webkit-transform: translate(-50%, -50%) rotate(-90deg);
+            transform: translate(-50%, -50%) rotate(-90deg);
+  }
+  100% {
+    -webkit-transform: translate(-50%, -50%) rotate(-90deg) translate(200%, 0%);
+            transform: translate(-50%, -50%) rotate(-90deg) translate(200%, 0%);
+  }
+}
+
+@keyframes green-ls-in {
+  0% {
+    -webkit-transform: translate(-50%, -50%) rotate(180deg);
+            transform: translate(-50%, -50%) rotate(180deg);
+  }
+  50% {
+    -webkit-transform: translate(-50%, -50%) rotate(-90deg);
+            transform: translate(-50%, -50%) rotate(-90deg);
+  }
+  100% {
+    -webkit-transform: translate(-50%, -50%) rotate(-90deg) translate(200%, 0%);
+            transform: translate(-50%, -50%) rotate(-90deg) translate(200%, 0%);
+  }
+}
+
+@-webkit-keyframes green-ls-out {
+  0% {
+    -webkit-transform: translate(-50%, -200%) rotate(-90deg);
+            transform: translate(-50%, -200%) rotate(-90deg);
+  }
+  50% {
+    -webkit-transform: translate(-50%, -50%) rotate(-90deg);
+            transform: translate(-50%, -50%) rotate(-90deg);
+  }
+  100% {
+    -webkit-transform: translate(-50%, -50%) rotate(180deg);
+            transform: translate(-50%, -50%) rotate(180deg);
+  }
+}
+
+@keyframes green-ls-out {
+  0% {
+    -webkit-transform: translate(-50%, -200%) rotate(-90deg);
+            transform: translate(-50%, -200%) rotate(-90deg);
+  }
+  50% {
+    -webkit-transform: translate(-50%, -50%) rotate(-90deg);
+            transform: translate(-50%, -50%) rotate(-90deg);
+  }
+  100% {
+    -webkit-transform: translate(-50%, -50%) rotate(180deg);
+            transform: translate(-50%, -50%) rotate(180deg);
+  }
+}
+
+@-webkit-keyframes fadein {
+  from {
+    Opacity: 0;
+  }
+  to {
+    Opacity: 1;
+  }
+}
+
+@keyframes fadein {
+  from {
+    Opacity: 0;
+  }
+  to {
+    Opacity: 1;
+  }
+}
+
+.first-view-nav {
+  padding: 40px 0;
+}
+
+.first-view-nav .section-inner {
+  text-align: center;
+}
+
+.first-view-nav .section-inner a {
+  max-width: 450px;
+}
+
+.player-select__heading {
+  padding: 24px 0;
+}
+
+.player-select__selected-picture {
+  max-width: 300px;
+  margin: 0 auto 24px;
+  position: relative;
+}
+
+.player-select__selected-picture #lightsaber-dooku {
+  visibility: hidden;
+  position: absolute;
+  top: 60%;
+  left: 72%;
+  -webkit-transform: rotate(18deg);
+          transform: rotate(18deg);
+}
+
+.player-select__selected-picture #lightsaber-dooku label {
+  opacity: 0;
+}
+
+.player-select__selected-picture #lightsaber-dooku .switch {
+  opacity: 0;
+}
+
+.player-select__selected-picture #lightsaber-anakin {
+  visibility: hidden;
+  position: absolute;
+  top: 81%;
+  left: 22%;
+}
+
+.player-select__selected-picture #lightsaber-anakin label {
+  opacity: 0;
+}
+
+.player-select__selected-picture #lightsaber-anakin .switch {
+  opacity: 0;
+}
+
+.player-select__selected-picture #lightsaber-obi {
+  visibility: hidden;
+  position: absolute;
+  top: 56%;
+  left: 46%;
+  -webkit-transform: rotate(-128deg);
+          transform: rotate(-128deg);
+}
+
+.player-select__selected-picture #lightsaber-obi label {
+  opacity: 0;
+}
+
+.player-select__selected-picture #lightsaber-obi .switch {
+  opacity: 0;
+}
+
+.player-select .player-list {
+  margin: 0 auto 24px;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+}
+
+.player-select .player-list__character {
+  opacity: 0.5;
+}
+
+.player-select .player-list #dooku.active {
+  opacity: 1;
+}
+
+.player-select .player-list #anakin.active {
+  opacity: 1;
+}
+
+.player-select .player-list #obi.active {
+  opacity: 1;
+}
+
+.player-select__btns {
+  max-width: 600px;
+  margin: 0 auto;
+}
+
+.player-select__btns a {
+  margin-bottom: 20px;
+}
+
+.janken__heading {
+  padding: 24px 0;
+}
+
+.janken__enemy {
+  max-width: 300px;
+  margin: 0 auto;
+  overflow: hidden;
+  height: 150px;
+}
+
+.janken__text {
+  text-align: center;
+  padding: 8px;
+}
+
+.janken__myself {
+  max-width: 300px;
+  height: 300px;
+  position: relative;
+  margin: 0 auto 16px;
+}
+
+.janken__myself button {
+  width: 80%;
+  position: absolute;
+  bottom: 10%;
+  left: 50%;
+  -webkit-transform: translateX(-50%);
+          transform: translateX(-50%);
+  outline: 0;
+}
+
+.janken__myself .more {
+  visibility: hidden;
+}
+
+.janken .content-box {
+  font-size: 1.6rem;
+  max-width: 450px;
+  margin: 0 auto 24px;
+}
+
+.janken #dooku-obi {
+  display: none;
+}
+
+.janken #dooku-anakin {
+  display: none;
+}
+
+.janken #anakin-obi {
+  display: none;
+}
+
+.janken__btns {
+  max-width: 450px;
+  margin: 0 auto;
+}
+
+.janken__btns a {
+  margin-bottom: 20px;
+}
+/*# sourceMappingURL=style.css.map */

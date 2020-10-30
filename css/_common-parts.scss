@@ -1,0 +1,117 @@
+// inner wrapper
+.section-inner {
+  width: 95%;
+  margin: 0 auto;
+}
+
+
+// 見出し
+.heading {
+  text-align: center;
+
+  &--level1 {
+    font-size: 2.4rem;
+  }
+  &--level2 {
+    font-size: 1.8rem;
+  }
+  &--level3 {
+    font-size: 1.6rem;
+  }
+}
+
+
+// text
+
+.text {
+  font-size: 1.6rem;
+  text-shadow: 0 0 4px rgba(255,255,255,.8);
+  &--jedi {
+    font-family: 'jedi';
+    font-size: 2.4rem;
+  }
+}
+
+// button
+
+.btn {
+  display: inline-block;
+  text-align: center;
+  font-size: 2.4rem;
+  font-family: 'jedi';
+  text-shadow: 0 0 2px rgba(255,255,255,.8);
+  width: 100%;
+  padding: 0.5em 1em;
+  background-color: transparent;
+  transition: 0.2s;
+
+  &--round {
+    border-radius: 2em;
+  }
+
+  &--light-side {
+    color: $color-light-side__text;
+    background-color: $color-light-side__background;
+    box-shadow: 1px -1px 3px 1px $color-light-side__border inset,
+                -1px 1px 3px 1px $color-light-side__border inset;
+    &:hover {
+      text-shadow: 0 0 5px rgba(0,0,0,.8);
+      background-color: rgba($color-light-side__background, 0.4);
+    }
+  }
+  
+
+  &--dark-side {
+    color: $color-dark-side__text;
+    background-color: $color-dark-side__background;
+    box-shadow: 1px -1px 3px 1px $color-dark-side__border inset,
+                -1px 1px 3px 1px $color-dark-side__border inset;
+    &:hover {
+      background-color: rgba($color-dark-side__background, 0.3);
+    }
+  }
+
+
+  &--droid {
+    color: $color-droid__text;
+    text-shadow: 0 0 2px $color-droid__text;
+    background-color: $color-droid__background;
+    box-shadow: 1px -1px 3px 1px $color-droid__border inset,
+                -1px 1px 3px 1px $color-droid__border inset;
+    &:hover {
+      background-color: rgba($color-droid__background, 0.4);
+    }
+  }
+
+  &--disable {
+    pointer-events: none;
+    color: #ddd;
+    background-color: #444;
+    box-shadow: 1px -1px 3px 1px #ddd inset,
+    -1px 1px 3px 1px #ddd inset;
+  }
+
+}
+
+// ボックス
+.content-box {
+  padding: 2em;
+
+  &--light-side {
+    background-color: $color-light-side__background;
+    box-shadow: 1px -1px 3px 1px $color-light-side__border inset,
+                -1px 1px 3px 1px $color-light-side__border inset;
+  }
+
+  &--dark-side {
+    background-color: $color-dark-side__background;
+    box-shadow: 1px -1px 3px 1px $color-dark-side__border inset,
+                -1px 1px 3px 1px $color-dark-side__border inset;
+  }
+
+  &--droid {
+    background-color: $color-droid__background;
+    box-shadow: 1px -1px 3px 1px $color-droid__border inset,
+                -1px 1px 3px 1px $color-droid__border inset;
+  }
+}
