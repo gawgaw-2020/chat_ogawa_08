@@ -74,21 +74,21 @@ login.addEventListener('click', () => {
     storage.setItem('ogachatID', userID);
   }
   
-  // // ログインログの保存
-  // userscollection.doc(userID).set({
-  //   // サーバー側のタイムスタンプを取得
-  //   created: firebase.firestore.FieldValue.serverTimestamp(),
-  //   // ログインユーザー情報の保存
-  //   username: username,
-  //   userID: userID,
-  // })
-  // .then(doc => {
-  //   console.log(`added!`);
-  // })
-  // .catch(error => {
-  //   console.log('document add error!');
-  //   console.log(error);
-  // });
+  // ログインログの保存
+  userscollection.doc(userID).set({
+    // サーバー側のタイムスタンプを取得
+    created: firebase.firestore.FieldValue.serverTimestamp(),
+    // ログインユーザー情報の保存
+    username: username,
+    userID: userID,
+  })
+  .then(doc => {
+    console.log(`added!`);
+  })
+  .catch(error => {
+    console.log('document add error!');
+    console.log(error);
+  });
 
   // 現在日時の取得
   const time = new Date();
@@ -213,41 +213,41 @@ auth.onAuthStateChanged(user => {
   });
 
 
-  // // ログインしているユーザーデータを削除
-  // userscollection.doc(userID).delete().then(function() {
-  //   console.log("Document successfully deleted!");
-  // }).catch(function(error) {
-  //     console.error("Error removing document: ", error);
-  // });
+  // ログインしているユーザーデータを削除
+  userscollection.doc(userID).delete().then(function() {
+    console.log("Document successfully deleted!");
+  }).catch(function(error) {
+      console.error("Error removing document: ", error);
+  });
 
-  // // 現在日時の取得
-  // const time = new Date();
-  // const date2 = time.getHours() + ":" + String(time.getMinutes()).padStart(2, "0");
-  // const messageDateTime = date2;
+  // 現在日時の取得
+  const time = new Date();
+  const date2 = time.getHours() + ":" + String(time.getMinutes()).padStart(2, "0");
+  const messageDateTime = date2;
   
-  // collection.add({
-  //   message: username + 'が退室しました。',
-  //   // サーバー側のタイムスタンプを取得
-  //   created: firebase.firestore.FieldValue.serverTimestamp(),
-  //   // ログインユーザー情報の保存
-  //   uid: me ? me.uid : 'nobody',
-  //   username: 'enter',
-  //   userID: userID,
-  //   messageDateTime: messageDateTime
-  // })
-  // .then(doc => {
-  //   console.log(`${doc.id} added!`);
-  // })
-  // .catch(error => {
-  //   console.log('document add error!');
-  //   console.log(error);
-  // });
+  collection.add({
+    message: username + 'が退室しました。',
+    // サーバー側のタイムスタンプを取得
+    created: firebase.firestore.FieldValue.serverTimestamp(),
+    // ログインユーザー情報の保存
+    uid: me ? me.uid : 'nobody',
+    username: 'enter',
+    userID: userID,
+    messageDateTime: messageDateTime
+  })
+  .then(doc => {
+    console.log(`${doc.id} added!`);
+  })
+  .catch(error => {
+    console.log('document add error!');
+    console.log(error);
+  });
 
 });
 
 
 
-
+// 飛行機マークを押した時の処理
 document.getElementById('send-btn').addEventListener('click', (e) => {
 
   // ページ遷移しないようにする
@@ -330,6 +330,7 @@ form.addEventListener('submit', e => {
     console.log(error);
   });
 });
+
 
 
 // 削除ボタンを出す
