@@ -60,6 +60,15 @@ const messages = document.getElementById('messages');
 const login = document.getElementById('login');
 const logout = document.getElementById('logout');
 
+// 削除処理
+function deleteMessage(self) {
+  const messageID = self.getAttribute('data-id');
+  collection.doc(messageID).delete().then(function() {
+    console.log("Document successfully deleted!");
+  }).catch(function(error) {
+    console.error("Error removing document: ", error);
+  });
+};
 
 
 // ログインボタンを押した時の処理
@@ -84,10 +93,26 @@ auth.onAuthStateChanged(user => {
     // 'created'でソートして画面に表示
     collection.orderBy('created').onSnapshot(snapshot => {
       snapshot.docChanges().forEach(change => {
+        if (change.type === 'removed') {
+          // 現在日時の取得
+          const time = new Date();
+          const date2 = time.getHours() + ":" + String(time.getMinutes()).padStart(2, "0");
+          const messageDateTime = date2;
+
+          document.getElementById(change.doc.id).innerHTML = '<p>'+ date2 +'</p><p>メッセージの送信を取り消しました</p>';
+          document.getElementById(change.doc.id).classList.add('delete-message')
+          ;
+        }
         if (change.type === 'added') {
           const li = document.createElement('li');
           const d = change.doc.data();
+          li.setAttribute('id', change.doc.id);
           li.innerHTML = `<p class="username">${d.username}</p><p class="message">${d.message}</p><p class="message-date-time">${d.messageDateTime}</p>`;
+
+          // 自分のメッセージだったら削除ボタンを追加
+          if (change.doc.data().userID === storage.getItem('ogachatID')) {
+            li.innerHTML += '<button data-id="'+ change.doc.id +'" onclick="deleteMessage(this);">削除</button>';
+          }
 
           if (change.doc.data().userID !== storage.getItem('ogachatID')) {
             li.classList.add('another');
@@ -138,8 +163,7 @@ document.getElementById('send-btn').addEventListener('click', (e) => {
 
   // 現在日時の取得
   const time = new Date();
-  const date2 = time.getHours() + ":" + 
-  time.getMinutes();
+  const date2 = time.getHours() + ":" + String(time.getMinutes()).padStart(2, "0");
   const messageDateTime = date2;
 
   // ボックスを空にしてフォーカスを当てる
@@ -181,8 +205,7 @@ form.addEventListener('submit', e => {
 
   // 現在日時の取得
   const time = new Date();
-  const date2 = time.getHours() + ":" + 
-  time.getMinutes();
+  const date2 = time.getHours() + ":" + String(time.getMinutes()).padStart(2, "0");
   const messageDateTime = date2;
 
   // ボックスを空にしてフォーカスを当てる

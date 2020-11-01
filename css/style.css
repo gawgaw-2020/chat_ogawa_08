@@ -530,7 +530,7 @@ nav ul li.yellow:hover {
 }
 
 .line-container .screen-header {
-  padding: 0.5em 1em;
+  padding: 0.5em 0.5em;
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
@@ -551,17 +551,18 @@ nav ul li.yellow:hover {
 
 .line-container .screen-header .screen-header__text03 i {
   display: inline-block;
-  margin-right: 10px;
+  margin-right: 17px;
 }
 
 .line-container .screen {
   background-color: #7392c0;
   overflow: auto;
-  width: 360px;
+  width: 361px;
   height: 648px;
   position: absolute;
   top: 133px;
   left: 47px;
+  padding-bottom: 16px;
 }
 
 .line-container .screen #messages::-webkit-scrollbar {
@@ -661,5 +662,14 @@ nav ul li.yellow:hover {
   bottom: 1px;
   left: initial;
   right: -49px;
+}
+
+.line-container .screen #messages li.delete-message {
+  background-color: rgba(0, 0, 0, 0.2);
+  color: #fff;
+  text-align: center;
+  font-size: 1rem;
+  margin: 0 auto 32px;
+  border-radius: 10px;
 }
 /*# sourceMappingURL=style.css.map */

@@ -10,7 +10,7 @@
   width: 450px;
   position: relative;
   .screen-header {
-    padding: 0.5em 1em;
+    padding: 0.5em 0.5em;
     display: flex;
     background-color: #273246;
     color: #fff;
@@ -26,18 +26,19 @@
     .screen-header__text03 {
     i {
       display: inline-block;
-      margin-right: 10px;
+      margin-right: 17px;
     }
     }
   }
   .screen {
     background-color: #7392c0;
     overflow: auto;
-    width: 360px;
+    width: 361px;
     height: 648px;
     position: absolute;
     top: 133px;
     left: 47px;
+    padding-bottom: 16px;
     #messages::-webkit-scrollbar {
       display: none;
     }
@@ -126,4 +127,13 @@
     left: initial;
     right: -49px;
   }
+}
+
+.line-container .screen #messages li.delete-message {
+  background-color: rgba(0, 0, 0, 0.2);
+  color: #fff;
+  text-align: center;
+  font-size: 1rem;
+  margin: 0 auto 32px;
+  border-radius: 10px;
 }
