@@ -577,6 +577,46 @@ nav ul li.yellow:hover {
   display: none;
 }
 
+.line-container .screen .over-screen {
+  background-image: url(/chat_ogawa_08/image/lock.jpg);
+  width: 100%;
+  height: 648px;
+  z-index: 999;
+  position: absolute;
+  top: 0;
+  left: 0;
+}
+
+.line-container .screen .over-screen #login {
+  position: absolute;
+  top: 488px;
+  left: 139px;
+  width: 85px;
+  height: 85px;
+  background: #eeaeca;
+  background: -webkit-gradient(linear, left top, right top, from(#ec81af), to(#61a1ed));
+  background: linear-gradient(90deg, #ec81af 0%, #61a1ed 100%);
+  border-radius: 50%;
+  border: 0px solid #ec81af;
+  -webkit-transition: 0.3s;
+  transition: 0.3s;
+}
+
+.line-container .screen .over-screen #login:hover {
+  border: 8px solid #ec81af;
+  background: #ec81af;
+  background: -webkit-gradient(linear, left top, right top, from(#eeaeca), to(#94bbe9));
+  background: linear-gradient(90deg, #eeaeca 0%, #94bbe9 100%);
+}
+
+.line-container .screen .over-screen #login i {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  -webkit-transform: translate(-50%, -50%);
+          transform: translate(-50%, -50%);
+}
+
 .line-container .screen #messages {
   height: 555px;
   overflow: auto;
@@ -629,6 +669,11 @@ nav ul li.yellow:hover {
   margin-right: 5px;
 }
 
+.line-container .screen .screen-footer .screen-footer__left .fa-plus {
+  -webkit-transform: rotate(45deg);
+          transform: rotate(45deg);
+}
+
 .line-container .screen .screen-footer form input {
   font-size: 1.4rem;
   width: 210px;
@@ -679,5 +724,26 @@ nav ul li.yellow:hover {
   font-size: 1rem;
   margin: 20px auto 16px;
   border-radius: 10px;
+}
+
+.line-container .screen #messages li.enter {
+  background-color: rgba(0, 0, 0, 0.2);
+  color: #fff;
+  text-align: center;
+  font-size: 1rem;
+  margin: 20px auto 16px;
+  border-radius: 10px;
+}
+
+.line-container .screen #messages li.enter .username {
+  display: none;
+}
+
+.line-container .screen #messages li.enter .message-date-time {
+  display: none;
+}
+
+.line-container .screen #messages li.enter .delete-icon {
+  display: none;
 }
 /*# sourceMappingURL=style.css.map */

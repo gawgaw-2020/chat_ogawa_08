@@ -45,6 +45,38 @@
     #messages::-webkit-scrollbar {
       display: none;
     }
+    .over-screen {
+      background-image: url(/chat_ogawa_08/image/lock.jpg);
+      width: 100%;
+      height: 648px;
+      z-index: 999;
+      position: absolute;
+      top: 0;
+      left: 0;
+      #login {
+        position: absolute;
+        top: 488px;
+        left: 139px;
+        width: 85px;
+        height: 85px;
+        background: rgb(238,174,202);
+        background: linear-gradient(90deg, rgba(236,129,175,1) 0%, rgba(97,161,237,1) 100%);
+        border-radius: 50%;
+        border: 0px solid rgb(236,129,175);
+        transition: 0.3s;
+        &:hover {
+          border: 8px solid rgb(236,129,175);
+          background: rgb(236,129,175);
+          background: linear-gradient(90deg, rgba(238,174,202,1) 0%, rgba(148,187,233,1) 100%);
+        }
+        i {
+          position: absolute;
+          top: 50%;
+          left: 50%;
+          transform: translate(-50%, -50%);
+        }
+      }
+    }
     #messages {
       height: 555px;
       overflow: auto;
@@ -84,6 +116,9 @@
         font-size: 2rem;
         i {
           margin-right: 5px;
+        }
+        .fa-plus {
+          transform: rotate(45deg);
         }
       }
       form {
@@ -139,4 +174,22 @@
   font-size: 1rem;
   margin: 20px auto 16px;
   border-radius: 10px;
+}
+
+.line-container .screen #messages li.enter {
+  background-color: rgba(0, 0, 0, 0.2);
+  color: #fff;
+  text-align: center;
+  font-size: 1rem;
+  margin: 20px auto 16px;
+  border-radius: 10px;
+  .username {
+    display: none;
+  }
+  .message-date-time {
+    display: none;
+  }
+  .delete-icon {
+    display: none;
+  }
 }

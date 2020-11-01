@@ -19,6 +19,7 @@ db.settings({
   timestampsInSnapshots: true
 });
 const collection = db.collection('messages');
+const userscollection = db.collection('users');
 const auth = firebase.auth();
 
 
@@ -26,7 +27,6 @@ const auth = firebase.auth();
 let me = null;
 let username = '';
 let userID = '';
-let userCounter = 0;
 
 // ユニークなIDを作る関数
 function getUniqueStr(myStrong){
@@ -44,13 +44,14 @@ if (storage.ogachatname !== undefined) {
   userID = storage.ogachatID;
 }
 
-
 // 要素の取得
 const message = document.getElementById('message');
 const form = document.querySelector('form');
 const messages = document.getElementById('messages');
+const overScreen = document.getElementById('over-screen');
 const login = document.getElementById('login');
 const logout = document.getElementById('logout');
+
 
 // 削除処理
 function deleteMessage(self) {
@@ -73,50 +74,107 @@ login.addEventListener('click', () => {
     storage.setItem('ogachatname', username);
     storage.setItem('ogachatID', userID);
   }
-  console.log(username);
-  console.log(userID);
+  
+  // ログインログの保存
+  userscollection.doc(userID).set({
+    // サーバー側のタイムスタンプを取得
+    created: firebase.firestore.FieldValue.serverTimestamp(),
+    // ログインユーザー情報の保存
+    username: username,
+    userID: userID,
+  })
+  .then(doc => {
+    console.log(`added!`);
+  })
+  .catch(error => {
+    console.log('document add error!');
+    console.log(error);
+  });
+
+  // 現在日時の取得
+  const time = new Date();
+  const date2 = time.getHours() + ":" + String(time.getMinutes()).padStart(2, "0");
+  const messageDateTime = date2;
+
+
+  collection.add({
+    message: username + 'が参加しました。',
+    // サーバー側のタイムスタンプを取得
+    created: firebase.firestore.FieldValue.serverTimestamp(),
+    // ログインユーザー情報の保存
+    uid: me ? me.uid : 'nobody',
+    username: 'enter',
+    userID: userID,
+    messageDateTime: messageDateTime
+  })
+  .then(doc => {
+    console.log(`${doc.id} added!`);
+  })
+  .catch(error => {
+    console.log('document add error!');
+    console.log(error);
+  });
+
 });
 // ログアウトボタンを押した時の処理
 logout.addEventListener('click', () => {
   auth.signOut();
 });
+
+
 // ログイン状態の監視
 auth.onAuthStateChanged(user => {
   // ユーザーの値を使って条件分岐
   if (user) {
     me = user;
 
+
+    // ログイン中のユーザー数をカウントして表示
+    userscollection.onSnapshot(snapshot => {
+      document.getElementById('user-counter').innerHTML =snapshot.docs.length;
+    });
+    
     // messages の最初の子要素が存在する限り messages から messages の最初の子要素を削除していく
     while (messages.firstChild) {
       messages.removeChild(messages.firstChild);
     }
 
+
     // 'created'でソートして画面に表示
     collection.orderBy('created').onSnapshot(snapshot => {
+      
       snapshot.docChanges().forEach(change => {
         if (change.type === 'removed') {
+          const d = change.doc.data();
           // 現在日時の取得
           const time = new Date();
           const date2 = time.getHours() + ":" + String(time.getMinutes()).padStart(2, "0");
           const messageDateTime = date2;
 
-          document.getElementById(change.doc.id).innerHTML = '<p>'+ date2 +'</p><p>メッセージの送信を取り消しました</p>';
+          document.getElementById(change.doc.id).innerHTML = '<p>'+ date2 +'</p><p>'+ d.username +'がメッセージの送信を取り消しました</p>';
           document.getElementById(change.doc.id).classList.add('delete-message')
           ;
         }
+        
         if (change.type === 'added') {
           const li = document.createElement('li');
           const d = change.doc.data();
           li.setAttribute('id', change.doc.id);
+
+          // 自分のメッセージじゃなかったら'another'クラスを追加
+          if (change.doc.data().userID !== storage.getItem('ogachatID')) {
+            li.classList.add('another');
+          }
+
+          // ユーザーネームがenterだったらクラスを追加
+          if (change.doc.data().username === 'enter') {
+            li.classList.add('enter');
+          }
           li.innerHTML = `<p class="username">${d.username}</p><p class="message">${d.message}</p><p class="message-date-time">${d.messageDateTime}</p>`;
 
           // 自分のメッセージだったら削除ボタンを追加
-          if (change.doc.data().userID === storage.getItem('ogachatID')) {
+          if (change.doc.data().userID === storage.getItem('ogachatID') && change.doc.data().username !== 'enter') {
             li.innerHTML += '<i class="delete-con fas fa-trash-alt" data-id="'+ change.doc.id +'" onclick="deleteMessage(this);" style="width: 100%; text-align: right;"></i>';
-          }
-
-          if (change.doc.data().userID !== storage.getItem('ogachatID')) {
-            li.classList.add('another');
           }
 
           messages.appendChild(li);
@@ -131,21 +189,57 @@ auth.onAuthStateChanged(user => {
         }
       });
     }, error => {});
+
     console.log(`Logged in as: ${user.uid}`);
     login.classList.add('hidden');
+    overScreen.classList.add('hidden');
     [logout, form, messages].forEach(el => {
       el.classList.remove('hidden');
     });
     message.focus();
     return;
   }
+
   // ログアウトした時の処理
   me = null;
   console.log('Nobody is logged in');
   login.classList.remove('hidden');
+  overScreen.classList.remove('hidden');
   [logout, form, messages].forEach(el => {
     el.classList.add('hidden');
   });
+
+  // ログインしているユーザーデータを削除
+  userscollection.doc(userID).delete().then(function() {
+    console.log("Document successfully deleted!");
+  }).catch(function(error) {
+      console.error("Error removing document: ", error);
+  });
+
+    // ログアウトした時のメッセージ
+  // 現在日時の取得
+  const time = new Date();
+  const date2 = time.getHours() + ":" + String(time.getMinutes()).padStart(2, "0");
+  const messageDateTime = date2;
+  
+  collection.add({
+    message: username + 'が退室しました。',
+    // サーバー側のタイムスタンプを取得
+    created: firebase.firestore.FieldValue.serverTimestamp(),
+    // ログインユーザー情報の保存
+    uid: me ? me.uid : 'nobody',
+    username: 'enter',
+    userID: userID,
+    messageDateTime: messageDateTime
+  })
+  .then(doc => {
+    console.log(`${doc.id} added!`);
+  })
+  .catch(error => {
+    console.log('document add error!');
+    console.log(error);
+  });
+
 });
 
 
@@ -234,11 +328,14 @@ form.addEventListener('submit', e => {
   });
 });
 
+
 // 削除ボタンを出す
 $('#delete-trigger').on('click', () => {
   $('.delete-con').fadeToggle(500);
 });
 
+
+// 名前変更処理
 $('#chage-name-trigger').on('click', () => {
   console.log('hoge');
   username = prompt('新しい名前を入力してください', 'ゲストユーザー');

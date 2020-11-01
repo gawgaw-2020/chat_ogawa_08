@@ -1,14 +1,12 @@
 <?php include(dirname(__FILE__).'/_inc/_header.html'); ?>
 
 <main>
-  <button id="login">login</button>
-  <button id="logout" class="hidden">logout</button>
   <div class="line-container">
     <img src="/chat_ogawa_08/image/smartphone-image-i.png" alt="">
     <div class="screen">
       <div class="screen-header">
         <p class="screen-header__text01">&lt;1</p>
-        <p class="screen-header__text02">LINEの部屋 (11)</p>
+        <p class="screen-header__text02">LINEの部屋 (<span id="user-counter">0</span>)</p>
         <p class="screen-header__text03">
           <i id="delete-trigger" class="fas fa-trash-alt"></i>
           <i id="chage-name-trigger" class="far fa-address-card"></i>
@@ -16,9 +14,12 @@
       </div>
       <ul id="messages" class="hidden">
       </ul>
+      <div id="over-screen" class="over-screen">
+        <p id="login"><i class="fas fa-unlock"></i></p>
+      </div>
       <div class="screen-footer">
         <p class="screen-footer__left">
-          <i class="fas fa-plus"></i>
+          <i id="logout" class="fas fa-plus"></i>
           <i class="fas fa-camera"></i>
           <i class="fas fa-image"></i>
         </p>
