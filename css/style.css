@@ -549,9 +549,18 @@ nav ul li.yellow:hover {
   width: 200px;
 }
 
+.line-container .screen-header .screen-header__text03 {
+  margin-left: auto;
+}
+
 .line-container .screen-header .screen-header__text03 i {
   display: inline-block;
   margin-right: 17px;
+}
+
+.line-container .screen-header .screen-header__text03 i#chage-name-trigger {
+  -webkit-transform: scale(1.4);
+          transform: scale(1.4);
 }
 
 .line-container .screen {
@@ -562,7 +571,6 @@ nav ul li.yellow:hover {
   position: absolute;
   top: 133px;
   left: 47px;
-  padding-bottom: 16px;
 }
 
 .line-container .screen #messages::-webkit-scrollbar {
@@ -580,7 +588,7 @@ nav ul li.yellow:hover {
   border-radius: 18px;
   background-color: #85e249;
   padding: 0.4em 1em;
-  margin: 0 12px 16px auto;
+  margin: 20px 12px 8px auto;
   position: relative;
 }
 
@@ -642,7 +650,7 @@ nav ul li.yellow:hover {
   background-color: #fff;
   color: #333;
   text-align: left;
-  margin: 0 auto 24px 12px;
+  margin: 20px auto 12px 12px;
 }
 
 .line-container .screen #messages li.another .username {
@@ -669,7 +677,7 @@ nav ul li.yellow:hover {
   color: #fff;
   text-align: center;
   font-size: 1rem;
-  margin: 0 auto 32px;
+  margin: 20px auto 16px;
   border-radius: 10px;
 }
 /*# sourceMappingURL=style.css.map */

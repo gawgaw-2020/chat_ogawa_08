@@ -26,6 +26,7 @@ const auth = firebase.auth();
 let me = null;
 let username = '';
 let userID = '';
+let userCounter = 0;
 
 // ユニークなIDを作る関数
 function getUniqueStr(myStrong){
@@ -43,15 +44,6 @@ if (storage.ogachatname !== undefined) {
   userID = storage.ogachatID;
 }
 
-// ユーザーネームが空なら名前を入力してもらう
-if (username === '') {
-  username = prompt('好きな名前を入力してください', 'ゲストユーザー');
-  userID = getUniqueStr();
-  storage.setItem('ogachatname', username);
-  storage.setItem('ogachatID', userID);
-}
-console.log(username);
-console.log(userID);
 
 // 要素の取得
 const message = document.getElementById('message');
@@ -74,6 +66,15 @@ function deleteMessage(self) {
 // ログインボタンを押した時の処理
 login.addEventListener('click', () => {
   auth.signInAnonymously();
+  // ユーザーネームが空なら名前を入力してもらう
+  if (username === '') {
+    username = prompt('好きな名前を入力してください', 'ゲストユーザー');
+    userID = getUniqueStr();
+    storage.setItem('ogachatname', username);
+    storage.setItem('ogachatID', userID);
+  }
+  console.log(username);
+  console.log(userID);
 });
 // ログアウトボタンを押した時の処理
 logout.addEventListener('click', () => {
@@ -111,7 +112,7 @@ auth.onAuthStateChanged(user => {
 
           // 自分のメッセージだったら削除ボタンを追加
           if (change.doc.data().userID === storage.getItem('ogachatID')) {
-            li.innerHTML += '<button data-id="'+ change.doc.id +'" onclick="deleteMessage(this);">削除</button>';
+            li.innerHTML += '<i class="delete-con fas fa-trash-alt" data-id="'+ change.doc.id +'" onclick="deleteMessage(this);" style="width: 100%; text-align: right;"></i>';
           }
 
           if (change.doc.data().userID !== storage.getItem('ogachatID')) {
@@ -119,6 +120,7 @@ auth.onAuthStateChanged(user => {
           }
 
           messages.appendChild(li);
+          $('.delete-con').hide();
 
           // メッセージを下までスクロール
           const element = document.getElementById('messages');
@@ -230,5 +232,16 @@ form.addEventListener('submit', e => {
     console.log('document add error!');
     console.log(error);
   });
+});
+
+// 削除ボタンを出す
+$('#delete-trigger').on('click', () => {
+  $('.delete-con').fadeToggle(500);
+});
+
+$('#chage-name-trigger').on('click', () => {
+  console.log('hoge');
+  username = prompt('新しい名前を入力してください', 'ゲストユーザー');
+  storage.setItem('ogachatname', username);
 });
 
