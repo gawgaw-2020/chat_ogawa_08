@@ -66,7 +66,6 @@ function deleteMessage(self) {
 
 // ログインボタンを押した時の処理
 login.addEventListener('click', () => {
-  auth.signInAnonymously();
   // ユーザーネームが空なら名前を入力してもらう
   if (username === '') {
     username = prompt('好きな名前を入力してください', 'ゲストユーザー');
@@ -75,21 +74,21 @@ login.addEventListener('click', () => {
     storage.setItem('ogachatID', userID);
   }
   
-  // ログインログの保存
-  userscollection.doc(userID).set({
-    // サーバー側のタイムスタンプを取得
-    created: firebase.firestore.FieldValue.serverTimestamp(),
-    // ログインユーザー情報の保存
-    username: username,
-    userID: userID,
-  })
-  .then(doc => {
-    console.log(`added!`);
-  })
-  .catch(error => {
-    console.log('document add error!');
-    console.log(error);
-  });
+  // // ログインログの保存
+  // userscollection.doc(userID).set({
+  //   // サーバー側のタイムスタンプを取得
+  //   created: firebase.firestore.FieldValue.serverTimestamp(),
+  //   // ログインユーザー情報の保存
+  //   username: username,
+  //   userID: userID,
+  // })
+  // .then(doc => {
+  //   console.log(`added!`);
+  // })
+  // .catch(error => {
+  //   console.log('document add error!');
+  //   console.log(error);
+  // });
 
   // 現在日時の取得
   const time = new Date();
@@ -115,6 +114,9 @@ login.addEventListener('click', () => {
     console.log(error);
   });
 
+    auth.signInAnonymously();
+
+
 });
 // ログアウトボタンを押した時の処理
 logout.addEventListener('click', () => {
@@ -136,6 +138,7 @@ auth.onAuthStateChanged(user => {
     
     // messages の最初の子要素が存在する限り messages から messages の最初の子要素を削除していく
     while (messages.firstChild) {
+      console.log('削除処理');
       messages.removeChild(messages.firstChild);
     }
 
@@ -209,36 +212,36 @@ auth.onAuthStateChanged(user => {
     el.classList.add('hidden');
   });
 
-  // ログインしているユーザーデータを削除
-  userscollection.doc(userID).delete().then(function() {
-    console.log("Document successfully deleted!");
-  }).catch(function(error) {
-      console.error("Error removing document: ", error);
-  });
 
-    // ログアウトした時のメッセージ
-  // 現在日時の取得
-  const time = new Date();
-  const date2 = time.getHours() + ":" + String(time.getMinutes()).padStart(2, "0");
-  const messageDateTime = date2;
+  // // ログインしているユーザーデータを削除
+  // userscollection.doc(userID).delete().then(function() {
+  //   console.log("Document successfully deleted!");
+  // }).catch(function(error) {
+  //     console.error("Error removing document: ", error);
+  // });
+
+  // // 現在日時の取得
+  // const time = new Date();
+  // const date2 = time.getHours() + ":" + String(time.getMinutes()).padStart(2, "0");
+  // const messageDateTime = date2;
   
-  collection.add({
-    message: username + 'が退室しました。',
-    // サーバー側のタイムスタンプを取得
-    created: firebase.firestore.FieldValue.serverTimestamp(),
-    // ログインユーザー情報の保存
-    uid: me ? me.uid : 'nobody',
-    username: 'enter',
-    userID: userID,
-    messageDateTime: messageDateTime
-  })
-  .then(doc => {
-    console.log(`${doc.id} added!`);
-  })
-  .catch(error => {
-    console.log('document add error!');
-    console.log(error);
-  });
+  // collection.add({
+  //   message: username + 'が退室しました。',
+  //   // サーバー側のタイムスタンプを取得
+  //   created: firebase.firestore.FieldValue.serverTimestamp(),
+  //   // ログインユーザー情報の保存
+  //   uid: me ? me.uid : 'nobody',
+  //   username: 'enter',
+  //   userID: userID,
+  //   messageDateTime: messageDateTime
+  // })
+  // .then(doc => {
+  //   console.log(`${doc.id} added!`);
+  // })
+  // .catch(error => {
+  //   console.log('document add error!');
+  //   console.log(error);
+  // });
 
 });
 

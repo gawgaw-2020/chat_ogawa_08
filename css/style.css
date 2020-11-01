@@ -524,9 +524,25 @@ nav ul li.yellow:hover {
 }
 
 .line-container {
-  margin: 0 auto;
+  margin: 0;
   width: 450px;
   position: relative;
+}
+
+@media screen and (min-width: 400px) {
+  .line-container {
+    margin: 0 auto;
+  }
+}
+
+.line-container .mobile {
+  display: none;
+}
+
+@media screen and (min-width: 400px) {
+  .line-container .mobile {
+    display: block;
+  }
 }
 
 .line-container .screen-header {
@@ -569,8 +585,15 @@ nav ul li.yellow:hover {
   width: 361px;
   height: 648px;
   position: absolute;
-  top: 133px;
-  left: 47px;
+  top: 0;
+  left: 0;
+}
+
+@media screen and (min-width: 400px) {
+  .line-container .screen {
+    top: 133px;
+    left: 47px;
+  }
 }
 
 .line-container .screen #messages::-webkit-scrollbar {

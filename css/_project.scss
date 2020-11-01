@@ -6,9 +6,18 @@
 
 
 .line-container {
-  margin: 0 auto;
+  margin: 0;
   width: 450px;
   position: relative;
+  @include mq(sm) {
+    margin: 0 auto;
+  }
+  .mobile {
+    display: none;
+    @include mq(sm) {
+      display: block;
+    }
+  }
   .screen-header {
     padding: 0.5em 0.5em;
     display: flex;
@@ -40,8 +49,12 @@
     width: 361px;
     height: 648px;
     position: absolute;
-    top: 133px;
-    left: 47px;
+    top: 0;
+    left: 0;
+    @include mq(sm) {
+      top: 133px;
+      left: 47px;
+    }
     #messages::-webkit-scrollbar {
       display: none;
     }
