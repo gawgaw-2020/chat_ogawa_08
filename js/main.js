@@ -68,7 +68,6 @@ function deleteMessage(self) {
     // コピー対象をJavaScript上で変数として定義する
     const copyTargetID = self.getAttribute('id');
     const copyTarget = document.getElementById(copyTargetID);
-    console.log(copyTarget.children[1]);
     // コピー対象のpタグオブジェクトを取得する.
     let pTag = copyTarget.children[1];
     // コピー内容を選択する.
@@ -251,24 +250,6 @@ collection.orderBy('created').onSnapshot(snapshot => {
         }
       }, Math.floor(Math.random() * (5000 - 500 + 1) + 500));
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
       // 自分のメッセージじゃなかったら'another'クラスを追加
       if (change.doc.data().userID !== storage.getItem('ogachatID')) {
         li.classList.add('another');
@@ -386,6 +367,9 @@ $('#delete-trigger').on('click', () => {
 $('#chage-name-trigger').on('click', () => {
   const oldName = storage.getItem('ogachatname');
   username = prompt('新しい名前を入力してください', oldName);
+  if (oldName === username) {
+    return;
+  }
   if (username === null || username === '') {
     username = '名無しのコード書き';
   }
