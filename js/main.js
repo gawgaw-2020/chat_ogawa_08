@@ -20,29 +20,14 @@ db.settings({
 });
 const collection = db.collection('messages');
 const userscollection = db.collection('users');
-const auth = firebase.auth();
+
+// -------------firebase関連ここまで-------------
 
 
 // ユーザー情報を入れる変数
 let me = null;
 let username = '';
 let userID = '';
-
-// ユニークなIDを作る関数
-function getUniqueStr(myStrong){
-  var strong = 1000;
-  if (myStrong) strong = myStrong;
-  return new Date().getTime().toString(16)  + Math.floor(strong*Math.random()).toString(16)
-}
-
-//ストレージの定義
-const storage = localStorage;
-
-// もしローカルストレージにユーザー名があればユーザー名を入れる
-if (storage.ogachatname !== undefined) {
-  username = storage.ogachatname;
-  userID = storage.ogachatID;
-}
 
 // 要素の取得
 const message = document.getElementById('message');
@@ -52,6 +37,15 @@ const overScreen = document.getElementById('over-screen');
 const login = document.getElementById('login');
 const logout = document.getElementById('logout');
 
+
+// -------------関数ここから-------------
+
+// ユニークなIDを作る関数
+function getUniqueStr(myStrong){
+  var strong = 1000;
+  if (myStrong) strong = myStrong;
+  return new Date().getTime().toString(16)  + Math.floor(strong*Math.random()).toString(16)
+}
 
 // 削除処理
 function deleteMessage(self) {
@@ -63,16 +57,46 @@ function deleteMessage(self) {
   });
 };
 
+  // 現在日時の取得
+  function getTime() {
+    const time = new Date();
+    const messageDateTime = time.getHours() + ":" + String(time.getMinutes()).padStart(2, "0");
+    return messageDateTime;
+  }
+
+// -------------関数ここまで-------------
+
+//ストレージの定義
+const storage = localStorage;
+
+// もしローカルストレージにユーザー名があればユーザー名を入れる
+if (storage.ogachatname !== undefined) {
+  username = storage.ogachatname;
+  userID = storage.ogachatID;
+}
+
 
 // ログインボタンを押した時の処理
 login.addEventListener('click', () => {
   // ユーザーネームが空なら名前を入力してもらう
-  if (username === '') {
+  if (username === '' || storage.getItem('ogachatname') === null) {
     username = prompt('好きな名前を入力してください', 'ゲストユーザー');
+    if (username === null || username === '') {
+      username = '名無しのコード書き';
+    }  
     userID = getUniqueStr();
     storage.setItem('ogachatname', username);
     storage.setItem('ogachatID', userID);
   }
+
+  console.log(`ログインしました`);
+
+  // 表示非表示の処理
+  login.classList.add('hidden');
+  overScreen.classList.add('hidden');
+  [logout, form, messages].forEach(el => {
+    el.classList.remove('hidden');
+  });
   
   // ログインログの保存
   userscollection.doc(userID).set({
@@ -83,160 +107,62 @@ login.addEventListener('click', () => {
     userID: userID,
   })
   .then(doc => {
-    console.log(`added!`);
+    console.log(`ログインログ added!`);
   })
   .catch(error => {
     console.log('document add error!');
     console.log(error);
   });
-
-  // 現在日時の取得
-  const time = new Date();
-  const date2 = time.getHours() + ":" + String(time.getMinutes()).padStart(2, "0");
-  const messageDateTime = date2;
 
 
   collection.add({
     message: username + 'が参加しました。',
     // サーバー側のタイムスタンプを取得
     created: firebase.firestore.FieldValue.serverTimestamp(),
-    // ログインユーザー情報の保存
-    uid: me ? me.uid : 'nobody',
     username: 'enter',
     userID: userID,
-    messageDateTime: messageDateTime
+    messageDateTime: getTime()
   })
   .then(doc => {
-    console.log(`${doc.id} added!`);
+    console.log(`ログインメッセージ added!`);
   })
   .catch(error => {
     console.log('document add error!');
     console.log(error);
   });
 
-    auth.signInAnonymously();
-
-
 });
+
+
 // ログアウトボタンを押した時の処理
 logout.addEventListener('click', () => {
-  auth.signOut();
-});
 
-
-// ログイン状態の監視
-auth.onAuthStateChanged(user => {
-  // ユーザーの値を使って条件分岐
-  if (user) {
-    me = user;
-
-
-    // ログイン中のユーザー数をカウントして表示
-    userscollection.onSnapshot(snapshot => {
-      document.getElementById('user-counter').innerHTML =snapshot.docs.length;
-    });
-    
-    // messages の最初の子要素が存在する限り messages から messages の最初の子要素を削除していく
-    while (messages.firstChild) {
-      console.log('削除処理');
-      messages.removeChild(messages.firstChild);
-    }
-
-
-    // 'created'でソートして画面に表示
-    collection.orderBy('created').onSnapshot(snapshot => {
-      
-      snapshot.docChanges().forEach(change => {
-        if (change.type === 'removed') {
-          const d = change.doc.data();
-          // 現在日時の取得
-          const time = new Date();
-          const date2 = time.getHours() + ":" + String(time.getMinutes()).padStart(2, "0");
-          const messageDateTime = date2;
-
-          document.getElementById(change.doc.id).innerHTML = '<p>'+ date2 +'</p><p>'+ d.username +'がメッセージの送信を取り消しました</p>';
-          document.getElementById(change.doc.id).classList.add('delete-message')
-          ;
-        }
-        
-        if (change.type === 'added') {
-          const li = document.createElement('li');
-          const d = change.doc.data();
-          li.setAttribute('id', change.doc.id);
-
-          // 自分のメッセージじゃなかったら'another'クラスを追加
-          if (change.doc.data().userID !== storage.getItem('ogachatID')) {
-            li.classList.add('another');
-          }
-
-          // ユーザーネームがenterだったらクラスを追加
-          if (change.doc.data().username === 'enter') {
-            li.classList.add('enter');
-          }
-          li.innerHTML = `<p class="username">${d.username}</p><p class="message">${d.message}</p><p class="message-date-time">${d.messageDateTime}</p>`;
-
-          // 自分のメッセージだったら削除ボタンを追加
-          if (change.doc.data().userID === storage.getItem('ogachatID') && change.doc.data().username !== 'enter') {
-            li.innerHTML += '<i class="delete-con fas fa-trash-alt" data-id="'+ change.doc.id +'" onclick="deleteMessage(this);" style="width: 100%; text-align: right;"></i>';
-          }
-
-          messages.appendChild(li);
-          $('.delete-con').hide();
-
-          // メッセージを下までスクロール
-          const element = document.getElementById('messages');
-          element.scroll({
-            top:element.scrollHeight, 
-            behavior:"smooth"
-          });
-        }
-      });
-    }, error => {});
-
-    console.log(`Logged in as: ${user.uid}`);
-    login.classList.add('hidden');
-    overScreen.classList.add('hidden');
-    [logout, form, messages].forEach(el => {
-      el.classList.remove('hidden');
-    });
-    message.focus();
-    return;
-  }
-
-  // ログアウトした時の処理
-  me = null;
-  console.log('Nobody is logged in');
+  // 表示非表示の切り替え
+  console.log('ログアウトしました');
   login.classList.remove('hidden');
   overScreen.classList.remove('hidden');
   [logout, form, messages].forEach(el => {
     el.classList.add('hidden');
   });
 
-
   // ログインしているユーザーデータを削除
   userscollection.doc(userID).delete().then(function() {
-    console.log("Document successfully deleted!");
+    console.log("ログインログ deleted!");
   }).catch(function(error) {
       console.error("Error removing document: ", error);
   });
 
-  // 現在日時の取得
-  const time = new Date();
-  const date2 = time.getHours() + ":" + String(time.getMinutes()).padStart(2, "0");
-  const messageDateTime = date2;
   
   collection.add({
     message: username + 'が退室しました。',
     // サーバー側のタイムスタンプを取得
     created: firebase.firestore.FieldValue.serverTimestamp(),
-    // ログインユーザー情報の保存
-    uid: me ? me.uid : 'nobody',
     username: 'enter',
     userID: userID,
-    messageDateTime: messageDateTime
+    messageDateTime: getTime()
   })
   .then(doc => {
-    console.log(`${doc.id} added!`);
+    console.log(`ログアウトメッセージ added!`);
   })
   .catch(error => {
     console.log('document add error!');
@@ -245,6 +171,62 @@ auth.onAuthStateChanged(user => {
 
 });
 
+
+// ログイン中のユーザー数をカウントして表示
+userscollection.onSnapshot(snapshot => {
+  document.getElementById('user-counter').innerHTML = snapshot.docs.length;
+});
+
+
+// 変更があったら'created'でソートして画面に表示
+collection.orderBy('created').onSnapshot(snapshot => {
+  
+  snapshot.docChanges().forEach(change => {
+    if (change.type === 'removed') {
+      const d = change.doc.data();
+
+      document.getElementById(change.doc.id).innerHTML = '<p>'+ d.messageDateTime +'</p><p>'+ d.username +'がメッセージの送信を取り消しました</p>';
+      document.getElementById(change.doc.id).classList.add('delete-message')
+      ;
+    }
+    
+    if (change.type === 'added') {
+      const li = document.createElement('li');
+      const d = change.doc.data();
+      li.setAttribute('id', change.doc.id);
+
+      // 自分のメッセージじゃなかったら'another'クラスを追加
+      if (change.doc.data().userID !== storage.getItem('ogachatID')) {
+        li.classList.add('another');
+      }
+
+      // ユーザーネームがenterだったらクラスを追加
+      if (change.doc.data().username === 'enter') {
+        li.classList.add('enter');
+      }
+      li.innerHTML = `<p class="username">${d.username}</p><p class="message">${d.message}</p><p class="message-date-time">${d.messageDateTime}</p>`;
+
+      // 自分のメッセージだったら削除ボタンを追加
+      if (change.doc.data().userID === storage.getItem('ogachatID') && change.doc.data().username !== 'enter') {
+        li.innerHTML += '<i class="delete-con fas fa-trash-alt" data-id="'+ change.doc.id +'" onclick="deleteMessage(this);" style="width: 100%; text-align: right;"></i>';
+      }
+
+      messages.appendChild(li);
+      // 削除アイコン隠しておく
+      $('.delete-con').hide();
+
+      // メッセージを下までスクロール
+      const element = document.getElementById('messages');
+      element.scroll({
+        top:element.scrollHeight, 
+        behavior:"smooth"
+      });
+    }
+  });
+});
+
+// 常にテキストボックスにフォーカス
+message.focus();
 
 
 // 飛行機マークを押した時の処理
@@ -260,11 +242,6 @@ document.getElementById('send-btn').addEventListener('click', (e) => {
     return;
   }
 
-  // 現在日時の取得
-  const time = new Date();
-  const date2 = time.getHours() + ":" + String(time.getMinutes()).padStart(2, "0");
-  const messageDateTime = date2;
-
   // ボックスを空にしてフォーカスを当てる
   message.value = '';
   message.focus();
@@ -274,14 +251,12 @@ document.getElementById('send-btn').addEventListener('click', (e) => {
     message: val,
     // サーバー側のタイムスタンプを取得
     created: firebase.firestore.FieldValue.serverTimestamp(),
-    // ログインユーザー情報の保存
-    uid: me ? me.uid : 'nobody',
     username: username,
     userID: userID,
-    messageDateTime: messageDateTime
+    messageDateTime: getTime()
   })
   .then(doc => {
-    console.log(`${doc.id} added!`);
+    console.log(`通常メッセージ added!`);
   })
   .catch(error => {
     console.log('document add error!');
@@ -302,10 +277,6 @@ form.addEventListener('submit', e => {
     return;
   }
 
-  // 現在日時の取得
-  const time = new Date();
-  const date2 = time.getHours() + ":" + String(time.getMinutes()).padStart(2, "0");
-  const messageDateTime = date2;
 
   // ボックスを空にしてフォーカスを当てる
   message.value = '';
@@ -316,14 +287,12 @@ form.addEventListener('submit', e => {
     message: val,
     // サーバー側のタイムスタンプを取得
     created: firebase.firestore.FieldValue.serverTimestamp(),
-    // ログインユーザー情報の保存
-    uid: me ? me.uid : 'nobody',
     username: username,
     userID: userID,
-    messageDateTime: messageDateTime
+    messageDateTime: getTime()
   })
   .then(doc => {
-    console.log(`${doc.id} added!`);
+    console.log(`通常メッセージ added!`);
   })
   .catch(error => {
     console.log('document add error!');
@@ -341,8 +310,42 @@ $('#delete-trigger').on('click', () => {
 
 // 名前変更処理
 $('#chage-name-trigger').on('click', () => {
-  console.log('hoge');
-  username = prompt('新しい名前を入力してください', 'ゲストユーザー');
+  const oldName = storage.getItem('ogachatname');
+  username = prompt('新しい名前を入力してください', oldName);
+  if (username === null || username === '') {
+    username = '名無しのコード書き';
+  }
   storage.setItem('ogachatname', username);
+  alert('名前が変更されました')
+  collection.add({
+    message: oldName + 'が' + username + 'に名前を変更しました。',
+    // サーバー側のタイムスタンプを取得
+    created: firebase.firestore.FieldValue.serverTimestamp(),
+    username: 'enter',
+    userID: userID,
+    messageDateTime: getTime()
+  })
+  .then(doc => {
+    console.log(`名前変更メッセージ added!`);
+  })
+  .catch(error => {
+    console.log('document add error!');
+    console.log(error);
+  });
+
 });
 
+// ブラウザバック禁止
+history.pushState(null, null, location.href);
+window.addEventListener('popstate', (e) => {
+  history.go(1);
+});
+
+// リロード時の処理
+window.addEventListener('beforeunload', function(e){
+  /** 更新される直前の処理 */
+  var message = '本当に更新してよろしいですか？';
+  e.returnValue = message;
+  return message;
+  
+});
