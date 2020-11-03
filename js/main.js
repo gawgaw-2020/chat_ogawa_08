@@ -57,30 +57,41 @@ function deleteMessage(self) {
   });
 };
 
-  // 現在日時の取得
-  function getTime() {
-    const time = new Date();
-    const messageDateTime = time.getHours() + ":" + String(time.getMinutes()).padStart(2, "0");
-    return messageDateTime;
+// 現在日時の取得
+function getTime() {
+  const time = new Date();
+  const messageDateTime = time.getHours() + ":" + String(time.getMinutes()).padStart(2, "0");
+  return messageDateTime;
+}
+
+// クリックでコピーする関数
+function copyToClipboard(self) {
+  // コピー対象をJavaScript上で変数として定義する
+  const copyTargetID = self.getAttribute('id');
+  const copyTarget = document.getElementById(copyTargetID);
+  // コピー対象のpタグオブジェクトを取得する.
+  let pTag = copyTarget.children[1];
+  // コピー内容を選択する.
+  let range = document.createRange();
+  range.selectNodeContents(pTag);
+  let selection = window.getSelection();
+  selection.removeAllRanges();
+  selection.addRange(range);
+  // 選択したものをコピーする.
+  document.execCommand('copy');
+  // コピー内容の選択を解除する.
+  selection.removeAllRanges();
+}
+
+// 文中のURLをリンクにする関数
+function AutoLink(str) {
+  var regexp_url = /((h?)(ttps?:\/\/[a-zA-Z0-9.\-_@:/~?%&;=+#',()*!]+))/g; // ']))/;
+  var regexp_makeLink = function(all, url, h, href) {
+return '<a href="h' + href + '">' + url + '</a>';
   }
 
-  function copyToClipboard(self) {
-    // コピー対象をJavaScript上で変数として定義する
-    const copyTargetID = self.getAttribute('id');
-    const copyTarget = document.getElementById(copyTargetID);
-    // コピー対象のpタグオブジェクトを取得する.
-    let pTag = copyTarget.children[1];
-    // コピー内容を選択する.
-    let range = document.createRange();
-    range.selectNodeContents(pTag);
-    let selection = window.getSelection();
-    selection.removeAllRanges();
-    selection.addRange(range);
-    // 選択したものをコピーする.
-    document.execCommand('copy');
-    // コピー内容の選択を解除する.
-    selection.removeAllRanges();
-  }
+  return str.replace(regexp_url, regexp_makeLink);
+}
 
 // -------------関数ここまで-------------
 
@@ -212,43 +223,43 @@ collection.orderBy('created').onSnapshot(snapshot => {
       const li = document.createElement('li');
       const d = change.doc.data();
       li.setAttribute('id', change.doc.id);
-      li.setAttribute('onclick', 'copyToClipboard(this)');
+      li.setAttribute('ondblclick', 'copyToClipboard(this)');
 
 
-      setTimeout(() => {
-        if (change.doc.data().message.includes('コード書くぞ') || change.doc.data().message.includes('コードかくぞ')) {
-          const shout = [
-            'おー!', 
-            'いえーい!',
-            '書くぞー！',
-            '頑張ろー！！',
-            'Cool, Geek, Act with Passion ✊',
-            '好奇心で自走せよ✊',
-            '体感こそ知識、体現こそ知恵✊',
-            'DCAPで動き、Deployにこだわれ✊',
-            '常識や権威ではなくミッションで選べ✊',
-            '全力で走り抜く感動が至上✊',
-            'Always Ask “Why me？”✊',
-            '朝まで書くぞー!!'
-          ];
+      // setTimeout(() => {
+      //   if (change.doc.data().message.includes('コード書くぞ') || change.doc.data().message.includes('コードかくぞ')) {
+      //     const shout = [
+      //       'おー!', 
+      //       'いえーい!',
+      //       '書くぞー！',
+      //       '頑張ろー！！',
+      //       'Cool, Geek, Act with Passion ✊',
+      //       '好奇心で自走せよ✊',
+      //       '体感こそ知識、体現こそ知恵✊',
+      //       'DCAPで動き、Deployにこだわれ✊',
+      //       '常識や権威ではなくミッションで選べ✊',
+      //       '全力で走り抜く感動が至上✊',
+      //       'Always Ask “Why me？”✊',
+      //       '朝まで書くぞー!!'
+      //     ];
           
-          collection.add({
-            message: shout[Math.floor(Math.random() * shout.length)],
-            // サーバー側のタイムスタンプを取得
-            created: firebase.firestore.FieldValue.serverTimestamp(),
-            username: username,
-            userID: userID,
-            messageDateTime: getTime()
-          })
-          .then(doc => {
-            console.log(`通常メッセージ added!`);
-          })
-          .catch(error => {
-            console.log('document add error!');
-            console.log(error);
-          });
-        }
-      }, Math.floor(Math.random() * (5000 - 500 + 1) + 500));
+      //     collection.add({
+      //       message: shout[Math.floor(Math.random() * shout.length)],
+      //       // サーバー側のタイムスタンプを取得
+      //       created: firebase.firestore.FieldValue.serverTimestamp(),
+      //       username: username,
+      //       userID: userID,
+      //       messageDateTime: getTime()
+      //     })
+      //     .then(doc => {
+      //       console.log(`通常メッセージ added!`);
+      //     })
+      //     .catch(error => {
+      //       console.log('document add error!');
+      //       console.log(error);
+      //     });
+      //   }
+      // }, Math.floor(Math.random() * (5000 - 500 + 1) + 500));
 
       // 自分のメッセージじゃなかったら'another'クラスを追加
       if (change.doc.data().userID !== storage.getItem('ogachatID')) {
@@ -259,6 +270,7 @@ collection.orderBy('created').onSnapshot(snapshot => {
       if (change.doc.data().username === 'enter') {
         li.classList.add('enter');
       }
+      
       li.innerHTML = `<p class="username">${d.username}</p><p class="message">${d.message}</p><p class="message-date-time">${d.messageDateTime}</p>`;
 
       // 自分のメッセージだったら削除ボタンを追加
@@ -290,12 +302,16 @@ document.getElementById('send-btn').addEventListener('click', (e) => {
   // ページ遷移しないようにする
   e.preventDefault();
 
-  const val = message.value.trim();
+  let val = message.value.trim();
   
   // 空文字だったら処理を止める
   if (val === '') {
     return;
   }
+
+  // リンクにaタグをつける
+  val = AutoLink(val);
+
 
   // ボックスを空にしてフォーカスを当てる
   message.value = '';
@@ -317,20 +333,27 @@ document.getElementById('send-btn').addEventListener('click', (e) => {
     console.log('document add error!');
     console.log(error);
   });
-
 });
+
+
+
 // フォームを送信した時の処理
 form.addEventListener('submit', e => {
+  // 実行したい関数;
+  console.log('hoge');
 
   // ページ遷移しないようにする
   e.preventDefault();
 
-  const val = message.value.trim();
+  let val = message.value.trim();
   
   // 空文字だったら処理を止める
   if (val === '') {
     return;
   }
+
+  // リンクにaタグをつける
+  val = AutoLink(val);
 
 
   // ボックスを空にしてフォーカスを当てる
@@ -407,3 +430,4 @@ window.addEventListener('beforeunload', function(e){
   return message;
   
 });
+

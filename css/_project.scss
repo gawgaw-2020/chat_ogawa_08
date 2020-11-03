@@ -4,6 +4,11 @@
   display: none;
 }
 
+a {
+  color: blue;
+  text-decoration: underline;
+}
+
 
 .line-container {
   margin: 0;
@@ -104,6 +109,11 @@
         .username {
           display: none;
         }
+        .message {
+          a {
+            word-wrap:break-word;
+          }
+        }
         .message-date-time {
           text-align: right;
           width: 50px;
@@ -126,16 +136,17 @@
       display: flex;
       .screen-footer__left {
         width: 55px;
-        font-size: 1.6rem;
+        font-size: 1.4rem;
         line-height: 30px;
         i {
-          margin-right: 5px;
+          margin: 0 5px 0 3px;
         }
         .fa-plus {
           transform: rotate(45deg);
         }
       }
       form {
+        position: relative;
         input {
           font-size: 1.4rem;
           width: 230px;

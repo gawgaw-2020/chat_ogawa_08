@@ -523,6 +523,11 @@ nav ul li.yellow:hover {
   display: none;
 }
 
+a {
+  color: blue;
+  text-decoration: underline;
+}
+
 .line-container {
   margin: 0;
   width: 450px;
@@ -659,6 +664,10 @@ nav ul li.yellow:hover {
   display: none;
 }
 
+.line-container .screen #messages li .message a {
+  word-wrap: break-word;
+}
+
 .line-container .screen #messages li .message-date-time {
   text-align: right;
   width: 50px;
@@ -685,17 +694,21 @@ nav ul li.yellow:hover {
 
 .line-container .screen .screen-footer .screen-footer__left {
   width: 55px;
-  font-size: 1.6rem;
+  font-size: 1.4rem;
   line-height: 30px;
 }
 
 .line-container .screen .screen-footer .screen-footer__left i {
-  margin-right: 5px;
+  margin: 0 5px 0 3px;
 }
 
 .line-container .screen .screen-footer .screen-footer__left .fa-plus {
   -webkit-transform: rotate(45deg);
           transform: rotate(45deg);
+}
+
+.line-container .screen .screen-footer form {
+  position: relative;
 }
 
 .line-container .screen .screen-footer form input {
