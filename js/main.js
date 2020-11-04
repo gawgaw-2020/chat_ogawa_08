@@ -226,40 +226,40 @@ collection.orderBy('created').onSnapshot(snapshot => {
       li.setAttribute('ondblclick', 'copyToClipboard(this)');
 
 
-      // setTimeout(() => {
-      //   if (change.doc.data().message.includes('コード書くぞ') || change.doc.data().message.includes('コードかくぞ')) {
-      //     const shout = [
-      //       'おー!', 
-      //       'いえーい!',
-      //       '書くぞー！',
-      //       '頑張ろー！！',
-      //       'Cool, Geek, Act with Passion ✊',
-      //       '好奇心で自走せよ✊',
-      //       '体感こそ知識、体現こそ知恵✊',
-      //       'DCAPで動き、Deployにこだわれ✊',
-      //       '常識や権威ではなくミッションで選べ✊',
-      //       '全力で走り抜く感動が至上✊',
-      //       'Always Ask “Why me？”✊',
-      //       '朝まで書くぞー!!'
-      //     ];
+      setTimeout(() => {
+        if (change.doc.data().message.includes('コード書くぞ') || change.doc.data().message.includes('コードかくぞ')) {
+          const shout = [
+            'おー!', 
+            'いえーい!',
+            '書くぞー！',
+            '頑張ろー！！',
+            'Cool, Geek, Act with Passion ✊',
+            '好奇心で自走せよ✊',
+            '体感こそ知識、体現こそ知恵✊',
+            'DCAPで動き、Deployにこだわれ✊',
+            '常識や権威ではなくミッションで選べ✊',
+            '全力で走り抜く感動が至上✊',
+            'Always Ask “Why me？”✊',
+            '朝まで書くぞー!!'
+          ];
           
-      //     collection.add({
-      //       message: shout[Math.floor(Math.random() * shout.length)],
-      //       // サーバー側のタイムスタンプを取得
-      //       created: firebase.firestore.FieldValue.serverTimestamp(),
-      //       username: username,
-      //       userID: userID,
-      //       messageDateTime: getTime()
-      //     })
-      //     .then(doc => {
-      //       console.log(`通常メッセージ added!`);
-      //     })
-      //     .catch(error => {
-      //       console.log('document add error!');
-      //       console.log(error);
-      //     });
-      //   }
-      // }, Math.floor(Math.random() * (5000 - 500 + 1) + 500));
+          collection.add({
+            message: shout[Math.floor(Math.random() * shout.length)],
+            // サーバー側のタイムスタンプを取得
+            created: firebase.firestore.FieldValue.serverTimestamp(),
+            username: username,
+            userID: userID,
+            messageDateTime: getTime()
+          })
+          .then(doc => {
+            console.log(`通常メッセージ added!`);
+          })
+          .catch(error => {
+            console.log('document add error!');
+            console.log(error);
+          });
+        }
+      }, Math.floor(Math.random() * (5000 - 500 + 1) + 500));
 
       // 自分のメッセージじゃなかったら'another'クラスを追加
       if (change.doc.data().userID !== storage.getItem('ogachatID')) {
